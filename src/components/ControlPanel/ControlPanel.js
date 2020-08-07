@@ -28,7 +28,6 @@ const ControlPanel = ({ history }) => {
     register: styles.nothing,
     capture: styles.nothing,
     database: styles.nothing,
-    settings: styles.nothing,
   });
 
   const [sunglasses, setSunglasses] = useState(false);
@@ -46,6 +45,11 @@ const ControlPanel = ({ history }) => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const submitSettingsForm = (e) => {
+    e.preventDefault();
+    alert("Hurry ");
   };
 
   useEffect(() => {
@@ -100,7 +104,12 @@ const ControlPanel = ({ history }) => {
           <StorageIcon fontSize="large" />
         </IconButton>
       </div>
-      <div className={classNames(styles.iconBtn, selected.settings)}>
+      <div
+        className={classNames(
+          styles.iconBtn,
+          open ? styles.whiteBg : styles.nothing
+        )}
+      >
         <IconButton onClick={() => setOpen(true)}>
           <SettingsIcon fontSize="large" />
         </IconButton>
@@ -109,88 +118,78 @@ const ControlPanel = ({ history }) => {
         <Dialog
           open={open}
           onClose={handleClose}
+          className={styles.dialog}
           aria-labelledby="responsive-dialog-title"
         >
-          <DialogTitle id="responsive-dialog-title">{"Settings"}</DialogTitle>
-          <FormControl component="fieldset" className={styles.settingsDialog}>
-            <FormGroup aria-label="position" className={styles.settingsForm}>
-              <FormControlLabel
-                className={styles.formComponent}
-                value={sunglasses}
-                control={<Switch color="primary" />}
-                checked={sunglasses}
-                label="Allow Sunglasses"
-                labelPlacement="end"
-                onChange={() => setSunglasses(!sunglasses)}
-              />
-              <FormControlLabel
-                className={styles.formComponent}
-                value={emailToUser}
-                checked={emailToUser}
-                onChange={() => setEmailToUser(!emailToUser)}
-                control={<Switch color="primary" />}
-                label="Email To User"
-                labelPlacement="end"
-              />
-              <FormControlLabel
-                className={styles.formComponent}
-                value={saveOriginal}
-                checked={saveOriginal}
-                onChange={() => setOriginal(!saveOriginal)}
-                control={<Switch color="primary" />}
-                label="Save Original Image"
-                labelPlacement="end"
-              />
-              <FormControlLabel
-                className={styles.formComponent}
-                value={adminEmail}
-                control={
-                  <TextField
-                    variant="outlined"
-                    label="Admin Email"
-                    color="primary"
-                  />
-                }
-                // label="Admin Email"
-                // labelPlacement="top"
-                onChange={(e) => setAdminEmail(e.target.value)}
-              />
-              <FormControlLabel
-                className={styles.formComponent}
-                value={alarm}
-                checked={alarm}
-                onChange={() => setAlarm(!alarm)}
-                control={<Switch color="primary" />}
-                label="Sound Alarm"
-                labelPlacement="end"
-              />
-              <FormControlLabel
-                className={styles.formComponent}
-                value={thermalView}
-                checked={thermalView}
-                onChange={() => setThermalView(!thermalView)}
-                control={<Switch color="primary" />}
-                label="Thermal View"
-                labelPlacement="end"
-              />
-              <FormControlLabel
-                className={styles.formComponent}
-                checked={thermalView}
-                control={<Button className={styles.saveBtn}>Save</Button>}
-              />
-            </FormGroup>
-          </FormControl>
-          {/* <DialogActions>
-            <Button
-              onClick={handleClose}
-              color="primary"
-              variant="contained"
-              autoFocus
-              className={styles.saveBtn}
-            >
-              Save
-            </Button>
-          </DialogActions> */}
+          <DialogTitle
+            className={styles.dialogTitle}
+            id="responsive-dialog-title"
+          >
+            {"Settings"}
+          </DialogTitle>
+          <form onSubmit={submitSettingsForm}>
+            <FormControl component="fieldset" className={styles.settingsDialog}>
+              <FormGroup aria-label="position" className={styles.settingsForm}>
+                <FormControlLabel
+                  className={styles.formComponent}
+                  value={sunglasses}
+                  control={<Switch color="primary" />}
+                  checked={sunglasses}
+                  label="Allow sunglasses"
+                  labelPlacement="end"
+                  onChange={() => setSunglasses(!sunglasses)}
+                />
+                <FormControlLabel
+                  className={styles.formComponent}
+                  value={emailToUser}
+                  checked={emailToUser}
+                  onChange={() => setEmailToUser(!emailToUser)}
+                  control={<Switch color="primary" />}
+                  label="Email to user"
+                  labelPlacement="end"
+                />
+                <FormControlLabel
+                  className={styles.formComponent}
+                  value={saveOriginal}
+                  checked={saveOriginal}
+                  onChange={() => setOriginal(!saveOriginal)}
+                  control={<Switch color="primary" />}
+                  label="Save original image"
+                  labelPlacement="end"
+                />
+
+                <TextField
+                  className={classNames(styles.formComponent, styles.adminMail)}
+                  value={adminEmail}
+                  variant="standard"
+                  type="email"
+                  label="Admin email"
+                  onChange={(e) => setAdminEmail(e.target.value)}
+                />
+                <FormControlLabel
+                  className={styles.formComponent}
+                  value={alarm}
+                  checked={alarm}
+                  onChange={() => setAlarm(!alarm)}
+                  control={<Switch color="primary" />}
+                  label="Sound alarm"
+                  labelPlacement="end"
+                />
+                <FormControlLabel
+                  className={styles.formComponent}
+                  value={thermalView}
+                  checked={thermalView}
+                  onChange={() => setThermalView(!thermalView)}
+                  control={<Switch color="primary" />}
+                  label="Thermal view"
+                  labelPlacement="end"
+                />
+                <Button type="submit" className={styles.saveBtn}>
+                  Save
+                </Button>
+              </FormGroup>
+            </FormControl>
+          </form>
         </Dialog>
       </>
     </div>

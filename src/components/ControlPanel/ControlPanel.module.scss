@@ -21,11 +21,33 @@
 .whiteBg {
   background: white !important;
 }
+.dialog > div > div {
+  position: absolute !important;
+  left: 6%;
+  border-radius: 30px !important;
+}
+.dialogTitle {
+  h2 {
+    font-size: 1.5rem !important ;
+    font-weight: 800 !important ;
+    padding: 0 25px !important;
+  }
+}
 .settingsDialog {
-  padding: 10px 50px !important;
+  padding: 10px 60px !important;
+  padding-top: 0 !important;
 }
 .formComponent {
   margin: 5px 0;
+
+  span {
+    &:nth-child(2) {
+      padding-left: 20px;
+    }
+  }
+}
+.adminMail {
+  margin: 20px 0 !important;
 }
 .settingsForm {
   display: flex;
@@ -36,4 +58,8 @@
   background: var(--tintColor) !important;
   color: white !important;
   font-weight: 600 !important;
+  margin: 15px auto !important;
+  width: fit-content !important;
+  padding: 10px 50px !important;
+  border-radius: 20px !important;
 }

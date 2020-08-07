@@ -1,0 +1,79 @@
+.container {
+  width: var(--fixedWidth);
+  margin: auto;
+  padding-top: 10vh;
+}
+.heading {
+  h2 {
+    font-weight: 800;
+    font-size: 3rem;
+  }
+  p {
+    font-weight: 300;
+    font-size: 1rem;
+    margin: 10px 0;
+    color: grey;
+  }
+}
+.innerContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10vh;
+  .inputName {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border-radius: 20px;
+    padding: 20px 50px;
+    .inputField {
+      margin-top: 15px;
+    }
+  }
+  .angleFace {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    border-radius: 20px;
+    margin: 15px 0;
+    padding: 20px;
+
+    img {
+      width: 180px;
+    }
+  }
+}
+.nextBtn,
+.nextButton,
+.prevButton {
+  background: var(--tintColor) !important;
+  padding: 10px 50px !important;
+  margin: 15px auto !important;
+  color: white !important;
+  font-weight: 600 !important;
+  border-radius: 20px !important;
+}
+.nextButton {
+  border-radius: 0 20px 20px 0 !important;
+  padding: 10px 20px !important;
+}
+.prevButton {
+  border-radius: 20px 0 0 20px !important;
+  padding: 10px 20px !important;
+}
+.webcam {
+  padding: 0 50px;
+  border-radius: 20px !important;
+  background: black;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: fit-content !important;
+  video {
+    height: 50vh !important;
+    width: 500px;
+    object-fit: cover;
+  }
+}

@@ -1,9 +1,22 @@
 import React from "react";
 import styles from "./App.module.css";
-import { ControlPanel } from "./components";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { ControlPanel, Login, Register } from "./components";
 
 const App = () => {
-  return <div className={styles.container}>Hello WOrld</div>;
+  return (
+    <div className={styles.container}>
+      <Router>
+        <div className={styles.contorlPanel}>
+          <ControlPanel />
+        </div>
+        <Switch>
+          <Route path="/" exact component={Login} />
+          <Route path="/register" exact component={Register} />
+        </Switch>
+      </Router>
+    </div>
+  );
 };
 
 export default App;

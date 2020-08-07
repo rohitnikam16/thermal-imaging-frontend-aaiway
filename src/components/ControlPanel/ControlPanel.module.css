@@ -1,1 +1,63 @@
-/* No CSS *//*# sourceMappingURL=ControlPanel.module.css.map */
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 100vh;
+  position: fixed;
+  left: 0;
+  padding: 0 20px;
+  background: #0a022c;
+  padding-top: 8vh;
+}
+
+.iconBtn {
+  background: #555168;
+  border-radius: 50%;
+  margin: 20px 0;
+}
+
+.iconBtn svg {
+  color: var(--tintColor);
+}
+
+.whiteBg {
+  background: white !important;
+}
+
+.settingsDialog {
+  padding: 10px 50px !important;
+}
+
+.formComponent {
+  margin: 5px 0;
+}
+
+.settingsForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start !important;
+      -ms-flex-pack: start !important;
+          justify-content: flex-start !important;
+}
+
+.saveBtn {
+  background: var(--tintColor) !important;
+  color: white !important;
+  font-weight: 600 !important;
+}
+/*# sourceMappingURL=ControlPanel.module.css.map */

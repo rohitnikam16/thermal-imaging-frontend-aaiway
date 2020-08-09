@@ -1,0 +1,14 @@
+.MuiSwitch-root {
+}
+.MuiSwitch-colorPrimary.Mui-checked {
+  color: var(--tintColor) !important;
+}
+.MuiSwitch-colorPrimary.Mui-checked + .MuiSwitch-track {
+  background-color: var(--tintColor) !important;
+}
+.MuiInput-underline:after {
+  border-bottom: 2px solid var(--tintColor) !important;
+}
+.MuiFormLabel-root.Mui-focused {
+  color: var(--tintColor) !important;
+}

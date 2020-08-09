@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/thermal-imaging-frotnend/static/css/main.2de6d15c.chunk.css",
+    "main.js": "/thermal-imaging-frotnend/static/js/main.90d820ce.chunk.js",
+    "main.js.map": "/thermal-imaging-frotnend/static/js/main.90d820ce.chunk.js.map",
+    "runtime-main.js": "/thermal-imaging-frotnend/static/js/runtime-main.8a532e09.js",
+    "runtime-main.js.map": "/thermal-imaging-frotnend/static/js/runtime-main.8a532e09.js.map",
+    "static/js/2.96b9f4fa.chunk.js": "/thermal-imaging-frotnend/static/js/2.96b9f4fa.chunk.js",
+    "static/js/2.96b9f4fa.chunk.js.map": "/thermal-imaging-frotnend/static/js/2.96b9f4fa.chunk.js.map",
+    "index.html": "/thermal-imaging-frotnend/index.html",
+    "precache-manifest.68098cad7064857e5b250ef1ae65aad2.js": "/thermal-imaging-frotnend/precache-manifest.68098cad7064857e5b250ef1ae65aad2.js",
+    "service-worker.js": "/thermal-imaging-frotnend/service-worker.js",
+    "static/css/main.2de6d15c.chunk.css.map": "/thermal-imaging-frotnend/static/css/main.2de6d15c.chunk.css.map",
+    "static/js/2.96b9f4fa.chunk.js.LICENSE.txt": "/thermal-imaging-frotnend/static/js/2.96b9f4fa.chunk.js.LICENSE.txt",
+    "static/media/heroLogin.svg": "/thermal-imaging-frotnend/static/media/heroLogin.970d73b7.svg",
+    "static/media/video.webm": "/thermal-imaging-frotnend/static/media/video.2f554134.webm"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8a532e09.js",
+    "static/js/2.96b9f4fa.chunk.js",
+    "static/css/main.2de6d15c.chunk.css",
+    "static/js/main.90d820ce.chunk.js"
+  ]
+}

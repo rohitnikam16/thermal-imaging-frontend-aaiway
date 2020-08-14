@@ -1,7 +1,13 @@
 .container {
-  padding-top: 8vh;
   width: var(--fixedWidth);
   margin: auto;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .heading {
@@ -20,35 +26,29 @@
           align-items: center;
 }
 
-.heading h1,
-.heading p {
-  width: 100%;
-  text-align: left;
-}
-
 .heading h1 {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 800;
 }
 
 .heading p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 300;
   margin-top: 10px;
   color: grey;
+  margin-bottom: 20px;
 }
 
 .innerContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 100px 0;
   width: 100%;
 }
 
@@ -59,7 +59,7 @@
 
 .innerContainer .card {
   background: white;
-  padding: 50px;
+  padding: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -74,21 +74,8 @@
       -ms-flex-align: center;
           align-items: center;
   border-radius: 30px;
-  width: 400px;
-  height: 400px;
-}
-
-.innerContainer .heroImage {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.innerContainer .heroImage img {
-  max-width: 60%;
+  width: 350px;
+  height: 350px;
 }
 
 .submitBtn {
@@ -97,6 +84,6 @@
   background: var(--tintColor) !important;
   color: white !important;
   font-weight: 600 !important;
-  margin-top: 30px !important;
+  margin-top: 20px !important;
 }
 /*# sourceMappingURL=Login.module.css.map */

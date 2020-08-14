@@ -8,12 +8,12 @@ const Register = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.heading}>
-        <h2>Register Face</h2>
-        <p>You can start capturing images here to register new face.</p>
-      </div>
-      <Grid container className={styles.innerContainer}>
-        <Grid item lg={3} md={3} xs={3}>
+      <Grid container spacing={3} className={styles.innerContainer}>
+        {/* <Grid className={styles.inputCard} item lg={3} md={3} xs={12}>
+          <div className={styles.heading}>
+            <h2>Register Face</h2>
+            <p>You can start capturing images here to register new face.</p>
+          </div>
           <div className={styles.inputName}>
             <TextField
               className={styles.inputField}
@@ -41,8 +41,8 @@ const Register = () => {
               </Button>
             </div>
           </div>
-        </Grid>
-        <Grid lg={8} md={8} className={styles.webcam} item>
+        </Grid> */}
+        <Grid lg={8} md={6} xs={12} className={styles.webcam} item>
           <video controls autoPlay src={videoFile} />
         </Grid>
       </Grid>

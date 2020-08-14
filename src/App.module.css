@@ -11,13 +11,14 @@
   --primaryColor: #73546b;
   --backgroundGrey: #f1f1f1;
   --tintColor: #f67d7d;
-  --fixedWidth: 80%;
+  --fixedWidth: 70%;
 }
 
 .container {
   width: 100%;
   background: var(--backgroundGrey);
   min-height: 100vh;
+  overflow: hidden !important;
 }
 
 .contorlPanel {

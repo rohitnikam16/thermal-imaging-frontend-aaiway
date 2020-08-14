@@ -1,19 +1,18 @@
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   min-height: 100vh;
   position: fixed;
   left: 0;
   padding: 0 20px;
   background: #0a022c;
-  padding-top: 8vh;
 }
 .iconBtn {
   background: #555168;
   border-radius: 50%;
-  margin: 20px 0;
+  margin: 15px 0;
   svg {
     color: var(--tintColor);
   }

@@ -13,14 +13,14 @@ export const Login = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.heading}>
-        <h1>Login</h1>
-        <p>Please login here to continue</p>
-      </div>
       <div className={styles.innerContainer}>
         <div className={styles.formContainer}>
           <form onSubmit={submitForm}>
             <div className={styles.card}>
+              <div className={styles.heading}>
+                <h1>Login</h1>
+                <p>Please login here to continue</p>
+              </div>
               <TextField
                 className={styles.textField}
                 required
@@ -49,9 +49,9 @@ export const Login = () => {
             </div>
           </form>
         </div>
-        <div className={styles.heroImage}>
+        {/* <div className={styles.heroImage}>
           <img src={loginImage} alt="hero-login" />
-        </div>
+        </div> */}
       </div>
     </div>
   );

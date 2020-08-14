@@ -1,34 +1,32 @@
 .container {
-  padding-top: 8vh;
   width: var(--fixedWidth);
   margin: auto;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
 }
 .heading {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  h1,
-  p {
-    width: 100%;
-    text-align: left;
-  }
+
   h1 {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 800;
   }
   p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 300;
     margin-top: 10px;
     color: grey;
+    margin-bottom: 20px;
   }
 }
 .innerContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin: 100px 0;
   width: 100%;
 
   .textField {
@@ -39,22 +37,14 @@
   .card {
     background: white;
     // box-shadow: 2px 2px 15px -2px rgba(0, 0, 0, 0.1);
-    padding: 50px;
+    padding: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 30px;
-    width: 400px;
-    height: 400px;
-  }
-
-  .heroImage {
-    display: flex;
-    justify-content: center;
-    img {
-      max-width: 60%;
-    }
+    width: 350px;
+    height: 350px;
   }
 }
 .submitBtn {
@@ -63,5 +53,5 @@
   background: var(--tintColor) !important;
   color: white !important;
   font-weight: 600 !important;
-  margin-top: 30px !important;
+  margin-top: 20px !important;
 }

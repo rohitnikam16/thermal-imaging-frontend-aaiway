@@ -1,12 +1,20 @@
 .container {
   width: var(--fixedWidth);
   margin: auto;
-  padding-top: 10vh;
+  height: 100vh !important;
+  padding: 10vh 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-left: 20vw;
 }
 
 .heading h2 {
   font-weight: 800;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .heading p {
@@ -14,6 +22,22 @@
   font-size: 1rem;
   margin: 10px 0;
   color: grey;
+  width: 70%;
+}
+
+.inputCard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: white;
+  border-radius: 20px;
+  padding: 20px 50px;
 }
 
 .innerContainer {
@@ -23,7 +47,7 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-top: 10vh;
+  margin-top: 8vh;
 }
 
 .innerContainer .inputName {
@@ -40,9 +64,6 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: white;
-  border-radius: 20px;
-  padding: 20px 50px;
 }
 
 .innerContainer .inputName .inputField {
@@ -67,7 +88,7 @@
 }
 
 .innerContainer .angleFace img {
-  width: 180px;
+  width: 120px;
 }
 
 .nextBtn,
@@ -108,8 +129,7 @@
 }
 
 .webcam video {
-  height: 50vh !important;
-  width: 500px;
+  width: 250px;
   -o-object-fit: cover;
      object-fit: cover;
 }

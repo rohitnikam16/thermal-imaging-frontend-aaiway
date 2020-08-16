@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "63edd0790b6a8e260b75d7817d03d903",
+    "revision": "37282424310eff6ba5d9a3d421f3a696",
     "url": "/thermal-imaging-frontend-aaiway/index.html"
   },
   {
-    "revision": "91767cf783d6dddd7eaf",
-    "url": "/thermal-imaging-frontend-aaiway/static/css/main.2de6d15c.chunk.css"
+    "revision": "389176308ab04b85522e",
+    "url": "/thermal-imaging-frontend-aaiway/static/css/main.e294c51b.chunk.css"
   },
   {
-    "revision": "7bbf80c3d36277b31345",
-    "url": "/thermal-imaging-frontend-aaiway/static/js/2.96b9f4fa.chunk.js"
+    "revision": "65f58d96b22b1a625107",
+    "url": "/thermal-imaging-frontend-aaiway/static/js/2.d07bad1b.chunk.js"
   },
   {
     "revision": "5e9b6f5c16b720e8a86875f97734673e",
-    "url": "/thermal-imaging-frontend-aaiway/static/js/2.96b9f4fa.chunk.js.LICENSE.txt"
+    "url": "/thermal-imaging-frontend-aaiway/static/js/2.d07bad1b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "91767cf783d6dddd7eaf",
-    "url": "/thermal-imaging-frontend-aaiway/static/js/main.90d820ce.chunk.js"
+    "revision": "389176308ab04b85522e",
+    "url": "/thermal-imaging-frontend-aaiway/static/js/main.201da685.chunk.js"
   },
   {
     "revision": "d0a9acd74b7cb0eb4bad",

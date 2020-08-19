@@ -12,3 +12,10 @@
 .MuiFormLabel-root.Mui-focused {
   color: var(--tintColor) !important;
 }
+.MuiTab-textColorPrimary.Mui-selected {
+  color: white !important;
+}
+
+.MuiTab-textColorPrimary {
+  color: rgb(197, 197, 197) !important;
+}

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/thermal-imaging-frontend-aaiway/precache-manifest.ab8eae8f26558b9eb4698afdf9a18d29.js"
+  "/thermal-imaging-frontend-aaiway/precache-manifest.b5d4d4114f9c0f9a1e3b2249bffc2531.js"
 );
 
 self.addEventListener('message', (event) => {

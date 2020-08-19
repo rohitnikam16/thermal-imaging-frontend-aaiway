@@ -177,9 +177,14 @@ const DatabaseSettings = () => {
   const [saveOriginal, setOriginal] = useState(true);
   const [guestRecord, setGuestRecord] = useState(false);
 
+  const submitSettingsForm = (e) => {
+    e.preventDefault();
+    alert("Hurry ");
+  };
+
   return (
     <div className={styles.container}>
-      <form onSubmit={() => alert("Hurry!")}>
+      <form onSubmit={submitSettingsForm}>
         <Fab className={styles.fab} color="secondary" aria-label="edit">
           <IconButton type="submit">
             <CheckIcon />
@@ -208,10 +213,14 @@ const DatabaseSettings = () => {
 
 const ApplicationSettings = () => {
   const [brightness, setBrightness] = useState(50);
+  const submitSettingsForm = (e) => {
+    e.preventDefault();
+    alert("Hurry ");
+  };
 
   return (
     <div className={styles.container}>
-      <form onSubmit={() => alert("Hurray Application !")}>
+      <form onSubmit={submitSettingsForm}>
         <Fab className={styles.fab} color="secondary" aria-label="edit">
           <IconButton type="submit">
             <CheckIcon />

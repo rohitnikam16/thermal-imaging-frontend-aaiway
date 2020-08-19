@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c96657819d728375c8cbedf9ef92b7eb",
+    "revision": "cd64f8283a8b9614ebe730300e9fd636",
     "url": "/thermal-imaging-frontend-aaiway/index.html"
   },
   {
-    "revision": "d29c7d7dd7cd7b59e14a",
+    "revision": "47bc2fb53ed5a0544402",
     "url": "/thermal-imaging-frontend-aaiway/static/css/main.70e4b9d6.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/thermal-imaging-frontend-aaiway/static/js/2.3b710301.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "d29c7d7dd7cd7b59e14a",
-    "url": "/thermal-imaging-frontend-aaiway/static/js/main.abbaf10d.chunk.js"
+    "revision": "47bc2fb53ed5a0544402",
+    "url": "/thermal-imaging-frontend-aaiway/static/js/main.e98f7c8f.chunk.js"
   },
   {
     "revision": "d0a9acd74b7cb0eb4bad",

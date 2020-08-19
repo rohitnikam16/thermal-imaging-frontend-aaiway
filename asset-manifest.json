@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/thermal-imaging-frontend-aaiway/static/css/main.70e4b9d6.chunk.css",
-    "main.js": "/thermal-imaging-frontend-aaiway/static/js/main.abbaf10d.chunk.js",
-    "main.js.map": "/thermal-imaging-frontend-aaiway/static/js/main.abbaf10d.chunk.js.map",
+    "main.js": "/thermal-imaging-frontend-aaiway/static/js/main.e98f7c8f.chunk.js",
+    "main.js.map": "/thermal-imaging-frontend-aaiway/static/js/main.e98f7c8f.chunk.js.map",
     "runtime-main.js": "/thermal-imaging-frontend-aaiway/static/js/runtime-main.38dfbae8.js",
     "runtime-main.js.map": "/thermal-imaging-frontend-aaiway/static/js/runtime-main.38dfbae8.js.map",
     "static/js/2.3b710301.chunk.js": "/thermal-imaging-frontend-aaiway/static/js/2.3b710301.chunk.js",
     "static/js/2.3b710301.chunk.js.map": "/thermal-imaging-frontend-aaiway/static/js/2.3b710301.chunk.js.map",
     "index.html": "/thermal-imaging-frontend-aaiway/index.html",
-    "precache-manifest.b5d4d4114f9c0f9a1e3b2249bffc2531.js": "/thermal-imaging-frontend-aaiway/precache-manifest.b5d4d4114f9c0f9a1e3b2249bffc2531.js",
+    "precache-manifest.6796823f7c60c75369a61681a0f46d3f.js": "/thermal-imaging-frontend-aaiway/precache-manifest.6796823f7c60c75369a61681a0f46d3f.js",
     "service-worker.js": "/thermal-imaging-frontend-aaiway/service-worker.js",
     "static/css/main.70e4b9d6.chunk.css.map": "/thermal-imaging-frontend-aaiway/static/css/main.70e4b9d6.chunk.css.map",
     "static/js/2.3b710301.chunk.js.LICENSE.txt": "/thermal-imaging-frontend-aaiway/static/js/2.3b710301.chunk.js.LICENSE.txt",
@@ -21,6 +21,6 @@
     "static/js/runtime-main.38dfbae8.js",
     "static/js/2.3b710301.chunk.js",
     "static/css/main.70e4b9d6.chunk.css",
-    "static/js/main.abbaf10d.chunk.js"
+    "static/js/main.e98f7c8f.chunk.js"
   ]
 }

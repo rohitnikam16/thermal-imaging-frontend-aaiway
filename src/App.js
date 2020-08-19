@@ -1,7 +1,13 @@
 import React from "react";
 import styles from "./App.module.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { ControlPanel, Login, Register, Database } from "./components";
+import {
+  ControlPanel,
+  Login,
+  Register,
+  Database,
+  Settings,
+} from "./components";
 
 const App = () => {
   return (
@@ -14,6 +20,7 @@ const App = () => {
           <Route path="/" exact component={Login} />
           <Route path="/register" exact component={Register} />
           <Route path="/database" exact component={Database} />
+          <Route path="/settings" exact component={Settings} />
         </Switch>
       </Router>
     </div>

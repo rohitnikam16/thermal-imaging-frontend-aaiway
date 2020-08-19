@@ -1,0 +1,71 @@
+.tabsContainer {
+  padding-left: 100px !important;
+  background-color: var(--primaryColor) !important;
+}
+
+.outerContainer {
+  overflow-y: hidden !important;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+.row,
+.col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100% !important;
+  margin: auto;
+  padding: 5px 0 5px 100px;
+}
+
+.row h4,
+.col h4 {
+  font-weight: 400 !important;
+  cursor: pointer;
+}
+
+.col {
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: normal !important;
+      -ms-flex-direction: column !important;
+          flex-direction: column !important;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.sceneSelection {
+  width: 100% !important;
+  margin: 15px 0;
+}
+
+.textField {
+  width: 100% !important;
+  margin: 15px 0 !important;
+}
+
+.fullHeight {
+  height: 100vh !important;
+}
+
+.fab {
+  position: fixed !important;
+  bottom: 1.5rem !important;
+  right: 1.5rem !important;
+}
+
+.fab svg {
+  color: white !important;
+}
+/*# sourceMappingURL=Settings.module.css.map */

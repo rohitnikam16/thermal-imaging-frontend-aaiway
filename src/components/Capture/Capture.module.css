@@ -2,12 +2,40 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative !important;
   justify-items: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-left: 100px !important;
+  height: 480px;
   width: var(--fixedWidth);
+  overflow: hidden !important;
+}
+
+.webcam {
+  border-radius: 25px;
   margin: auto;
-  padding-left: 30px;
+  pointer-events: none !important;
+}
+
+.captureBtn {
+  position: absolute !important;
+  bottom: 50px !important;
+  left: 50%;
+  background-color: var(--tintColor) !important;
+  border-radius: 20px !important;
+  padding: 10px 20px !important;
+  z-index: 100 !important;
+  -webkit-transform-origin: center !important;
+          transform-origin: center !important;
+  -webkit-transform: translate3d(-50%, 0, 0) !important;
+          transform: translate3d(-50%, 0, 0) !important;
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+.captureBtn svg {
+  margin-left: 10px;
 }
 /*# sourceMappingURL=Capture.module.css.map */

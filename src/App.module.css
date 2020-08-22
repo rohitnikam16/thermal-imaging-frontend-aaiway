@@ -22,6 +22,12 @@
 }
 
 .contorlPanel {
-  z-index: 10000;
+  z-index: 100000;
+}
+
+@media screen and (max-width: 900px) {
+  :root {
+    --fixedWidth: 90%;
+  }
 }
 /*# sourceMappingURL=App.module.css.map */

@@ -1,7 +1,7 @@
 .container {
-  width: var(--fixedWidth) !important;
+  width: calc(var(--fixedWidth) - 100px) !important;
   margin: 50px auto !important;
-  margin-left: 150px !important;
+  margin-left: 130px !important;
 }
 
 .tableHead {

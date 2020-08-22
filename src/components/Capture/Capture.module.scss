@@ -1,0 +1,8 @@
+.container {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  width: var(--fixedWidth);
+  margin: auto;
+  padding-left: 30px;
+}

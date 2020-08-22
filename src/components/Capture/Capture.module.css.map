@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAAA,AAAA,UAAU,CAAC;EACT,OAAO,EAAE,IAAI;EACb,aAAa,EAAE,MAAM;EACrB,WAAW,EAAE,MAAM;EACnB,KAAK,EAAE,iBAAiB;EACxB,MAAM,EAAE,IAAI;EACZ,YAAY,EAAE,IAAI;CACnB",
     "sources": [
         "Capture.module.scss"
     ],

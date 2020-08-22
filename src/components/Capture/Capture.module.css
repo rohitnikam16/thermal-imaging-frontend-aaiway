@@ -1,1 +1,13 @@
-/* No CSS *//*# sourceMappingURL=Capture.module.css.map */
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: var(--fixedWidth);
+  margin: auto;
+  padding-left: 30px;
+}
+/*# sourceMappingURL=Capture.module.css.map */

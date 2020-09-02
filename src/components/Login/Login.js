@@ -19,7 +19,7 @@ export const Login = () => {
             <div className={styles.card}>
               <div className={styles.heading}>
                 <h1>Login</h1>
-                <p>Please login here to continue</p>
+                {/* <p>Please login here to continue</p> */}
               </div>
               <TextField
                 className={styles.textField}

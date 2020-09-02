@@ -24,6 +24,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-bottom: 20px;
 }
 
 .heading h1 {
@@ -36,7 +37,6 @@
   font-weight: 300;
   margin-top: 10px;
   color: grey;
-  margin-bottom: 20px;
 }
 
 .innerContainer {
@@ -74,8 +74,8 @@
       -ms-flex-align: center;
           align-items: center;
   border-radius: 30px;
-  width: 350px;
-  height: 350px;
+  width: 400px;
+  height: 420px;
 }
 
 .submitBtn {

@@ -2,14 +2,13 @@
   width: var(--fixedWidth);
   margin: auto;
   height: 100vh !important;
-  padding: 10vh 0;
+  padding: 100px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-left: 20vw;
 }
 
 .heading h2 {
@@ -123,13 +122,11 @@
       -ms-flex-pack: center;
           justify-content: center;
   margin: auto;
-  width: -webkit-fit-content !important;
-  width: -moz-fit-content !important;
-  width: fit-content !important;
+  width: 100% !important;
 }
 
 .webcam video {
-  width: 250px;
+  width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }

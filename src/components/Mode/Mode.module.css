@@ -1,0 +1,84 @@
+.container {
+  width: var(--fixedWidth);
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 100vh;
+}
+
+.container .inOut,
+.container .thermal {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-pack: end !important;
+      -ms-flex-pack: end !important;
+          justify-content: flex-end !important;
+}
+
+.container .roundCard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: white;
+  border-radius: 40px;
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.container .roundCard .hero {
+  padding: 20px;
+}
+
+.container .roundCard .hero h1 {
+  font-size: 6rem;
+  font-weight: 800;
+  color: var(--tintColor);
+}
+
+.container .roundCard .hero img {
+  max-width: 120px;
+  min-width: 100px;
+}
+
+.container .roundCard .label {
+  padding: 20px 0;
+  background: var(--primaryColor);
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .roundCard .label h5 {
+  font-size: 1rem;
+  text-align: center;
+  color: white;
+  font-weight: 800;
+}
+/*# sourceMappingURL=Mode.module.css.map */

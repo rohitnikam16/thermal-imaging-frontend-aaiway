@@ -1,0 +1,57 @@
+.container {
+  width: var(--fixedWidth);
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  .inOut,
+  .thermal {
+    display: flex !important;
+    justify-content: flex-end !important;
+  }
+
+  .roundCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    border-radius: 40px;
+    width: 250px;
+    height: 250px;
+    // margin: auto;
+    overflow: hidden;
+    cursor: pointer;
+
+    .hero {
+      padding: 20px;
+      h1 {
+        font-size: 6rem;
+        font-weight: 800;
+        color: var(--tintColor);
+      }
+      img {
+        max-width: 120px;
+        min-width: 100px;
+      }
+    }
+
+    .label {
+      padding: 20px 0;
+      background: var(--primaryColor);
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      h5 {
+        font-size: 1rem;
+        text-align: center;
+        color: white;
+        font-weight: 800;
+      }
+    }
+  }
+}

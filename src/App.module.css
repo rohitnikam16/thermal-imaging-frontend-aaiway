@@ -23,6 +23,8 @@
 
 .contorlPanel {
   z-index: 100000;
+  position: fixed;
+  left: 0;
 }
 
 @media screen and (max-width: 900px) {

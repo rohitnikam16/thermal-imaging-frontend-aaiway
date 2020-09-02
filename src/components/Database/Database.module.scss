@@ -1,12 +1,18 @@
 .container {
-  width: calc(var(--fixedWidth) - 100px) !important;
-  margin: 50px auto !important;
-  margin-left: 130px !important;
+  width: var(--fixedWidth) !important;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 .tableHead {
   background: var(--primaryColor) !important;
+  padding: 50px 0 !important;
   .headCell {
     color: white !important;
+    font-size: 1.1em;
+    font-weight: 600;
   }
 }
 .faceImage {

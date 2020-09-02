@@ -1,6 +1,5 @@
 {
   "name": "thermal-imaging-frontend",
-  "homepage": "https://anuragtech02.github.io/thermal-imaging-frontend-aaiway/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

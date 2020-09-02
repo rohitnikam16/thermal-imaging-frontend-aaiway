@@ -75,9 +75,9 @@ const Database = () => {
   };
 
   return (
-    <>
-      <TableContainer className={styles.container} component={Paper}>
-        <Table className={styles.table} size="small" aria-label="a dense table">
+    <div className={styles.container}>
+      <TableContainer className={styles.tableContainer} component={Paper}>
+        <Table className={styles.table} size="medium">
           <TableHead className={styles.tableHead}>
             <TableRow>
               <TableCell className={styles.headCell}>Image</TableCell>
@@ -146,7 +146,7 @@ const Database = () => {
           </Button>
         </DialogActions>
       </Dialog>
-    </>
+    </div>
   );
 };
 

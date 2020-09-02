@@ -8,7 +8,7 @@ import mask from "../../assets/vectors/mask.svg";
 
 const Mode = ({ history }) => {
   const goToLocation = (location) => {
-    history.push(`/${location}`);
+    history.push(`/capture/${location}`);
   };
 
   return (

@@ -59,9 +59,9 @@ const Settings = () => {
           centered
           className={styles.tabsContainer}
         >
-          <Tab label="Detection Settings" />
-          <Tab label="Database Settings" />
-          <Tab label="Application Settings" />
+          <Tab className={styles.whiteColor} label="Detection Settings" />
+          <Tab className={styles.whiteColor} label="Database Settings" />
+          <Tab className={styles.whiteColor} label="Application Settings" />
         </Tabs>
         <TabPanel className={styles.fullHeight} value={value} index={0}>
           <DetectionSettings />

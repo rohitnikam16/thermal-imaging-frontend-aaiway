@@ -45,6 +45,10 @@
           align-items: flex-start;
 }
 
+.whiteColor {
+  color: white !important;
+}
+
 .sceneSelection {
   width: 100% !important;
   margin: 15px 0;

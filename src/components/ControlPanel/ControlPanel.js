@@ -36,7 +36,11 @@ const ControlPanel = ({ history }) => {
       case "/register":
         setSelected({ register: styles.whiteBg });
         break;
-      case "/capture":
+      case "/capture/thermal":
+      case "/capture/attendance":
+      case "/capture/in-out":
+      case "/capture/ppe":
+      case "/capture/select":
         setSelected({ capture: styles.whiteBg });
         break;
       case "/database":
@@ -76,7 +80,7 @@ const ControlPanel = ({ history }) => {
         </IconButton>
       </div>
       <div className={classNames(styles.iconBtn, selected.capture)}>
-        <IconButton onClick={() => onClickButton("capture")}>
+        <IconButton onClick={() => onClickButton("capture/select")}>
           <VideocamIcon fontSize="large" />
         </IconButton>
       </div>

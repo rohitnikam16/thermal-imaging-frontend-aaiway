@@ -23,7 +23,7 @@ const App = () => {
           <Route path="/register" exact component={Register} />
           <Route path="/mode" exact component={Mode} />
           <Route path="/database" exact component={Database} />
-          <Route path="/capture" exact component={Capture} />
+          <Route path="/capture/:mode" exact component={Capture} />
           <Route path="/settings" exact component={Settings} />
         </Switch>
       </Router>

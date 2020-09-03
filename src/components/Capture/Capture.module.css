@@ -96,14 +96,12 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: white;
   width: 100%;
   border-radius: 30px;
   padding: 50px;
 }
 
-.personContainer .countIn,
-.personContainer .countOut {
+.personContainer .counters {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -113,20 +111,159 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 100%;
 }
 
-.personContainer .countIn img,
-.personContainer .countOut img {
+.personContainer .counters .countIn,
+.personContainer .counters .countOut {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: auto 70px;
+}
+
+.personContainer .counters .countIn img,
+.personContainer .counters .countOut img {
   max-width: 40px;
 }
 
-.personContainer .countIn h1,
-.personContainer .countOut h1 {
-  font-size: 5em;
+.personContainer .counters .countIn .desc,
+.personContainer .counters .countOut .desc {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
-.personContainer .countOut img {
+.personContainer .counters .countIn .desc h1,
+.personContainer .counters .countOut .desc h1 {
+  font-size: 5em;
+  color: var(--primaryColor);
+  font-weight: 800;
+}
+
+.personContainer .counters .countIn .desc p,
+.personContainer .counters .countOut .desc p {
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.personContainer .counters .countOut img {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
+}
+
+.personContainer .camera {
+  background: black;
+  border-radius: 30px;
+  min-height: 60vh;
+  width: 100%;
+  margin: 50px auto;
+}
+
+.ppeContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ppeContainer .underline {
+  border-top: 2px solid var(--primaryColor);
+  width: 70%;
+  margin: 10px 0;
+}
+
+.ppeContainer .details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 50%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.ppeContainer .details .list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.ppeContainer .details .list .item {
+  width: 70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px 0;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ppeContainer .details .list .item img {
+  max-width: 30px;
+}
+
+.ppeContainer .details .list .item .statusImage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0.6;
+      -ms-flex: 0.6;
+          flex: 0.6;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.ppeContainer .cameraPPE {
+  width: 50%;
+  background: black;
+  min-height: 60vh;
+  border-radius: 30px;
+  overflow: hidden;
 }
 /*# sourceMappingURL=Capture.module.css.map */

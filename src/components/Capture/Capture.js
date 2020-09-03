@@ -9,6 +9,9 @@ import {
   FormControl,
 } from "@material-ui/core";
 import downArrow from "../../assets/vectors/down-arrow.svg";
+import upArrow from "../../assets/vectors/up-arrow.svg";
+import wrong from "../../assets/vectors/wrong.svg";
+import correct from "../../assets/vectors/correct.svg";
 import { useParams } from "react-router";
 import { withRouter } from "react-router-dom";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
@@ -35,6 +38,12 @@ const Capture = ({ history }) => {
           <ThermalImaging />
         </div>
       );
+    case "ppe":
+      return (
+        <div className={styles.container}>
+          <PPE />
+        </div>
+      );
     default:
       return (
         <div className={styles.container}>
@@ -51,7 +60,7 @@ const Options = ({ history }) => {
 
   const handleSubmit = (location, e) => {
     e.preventDefault();
-    alert("done");
+    // alert("done");
     history.push(`/capture/${location}`);
   };
 
@@ -117,19 +126,109 @@ const ThermalImaging = () => {
 };
 
 const PersonCounting = () => {
+  const personCamRef = useRef(null);
+
+  const videoConstraints = {
+    width: 600,
+    height: 450,
+    facingMode: "selfie",
+  };
+
   return (
     <div className={styles.personContainer}>
       <div className={styles.counters}>
         <div className={styles.countIn}>
           <img src={downArrow} alt="in" />
-          <h1>220</h1>
+          <div className={styles.desc}>
+            <h1>220</h1>
+            <p>No. of people in</p>
+          </div>
         </div>
         <div className={styles.countOut}>
-          <img src={downArrow} alt="out" />
-          <h1>180</h1>
+          <img src={upArrow} alt="out" />
+          <div className={styles.desc}>
+            <h1>180</h1>
+            <p>No. of people out</p>
+          </div>
         </div>
       </div>
-      <div className={styles.camera}></div>
+      <div className={styles.camera}>
+        <Webcam
+          className={styles.webcam}
+          ref={personCamRef}
+          audio={false}
+          screenshotFormat="image/jpeg"
+          videoConstraints={videoConstraints}
+        />
+      </div>
+    </div>
+  );
+};
+
+const PPE = () => {
+  const ppeCamRef = useRef(null);
+
+  const videoConstraints = {
+    width: 600,
+    height: 450,
+    facingMode: "selfie",
+  };
+
+  const list = [
+    {
+      name: "Mask",
+      image: "",
+      status: true,
+    },
+    {
+      name: "Gloves",
+      image: "",
+      status: true,
+    },
+    {
+      name: "Suit",
+      image: "",
+      status: false,
+    },
+    {
+      name: "Shoes",
+      image: "",
+      status: true,
+    },
+  ];
+
+  return (
+    <div className={styles.ppeContainer}>
+      <div className={styles.details}>
+        <div className={styles.heading}>
+          <h2>Equipments</h2>
+          <div className={styles.underline}></div>
+        </div>
+        <div className={styles.list}>
+          {list.map((item) => (
+            <div className={styles.item}>
+              <img src={item.image} alt="ppe-check-list-item" />
+              <h3>{item.name}</h3>
+              <div className={styles.statusImage}>
+                {item.status ? (
+                  <img src={correct} alt="present" />
+                ) : (
+                  <img src={wrong} alt="not-present" />
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className={styles.cameraPPE}>
+        <Webcam
+          className={styles.webcam}
+          ref={ppeCamRef}
+          audio={false}
+          screenshotFormat="image/jpeg"
+          videoConstraints={videoConstraints}
+        />
+      </div>
     </div>
   );
 };

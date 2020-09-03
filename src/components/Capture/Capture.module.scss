@@ -68,27 +68,111 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: white;
   width: 100%;
   border-radius: 30px;
   padding: 50px;
 
-  .countIn,
-  .countOut {
+  .counters {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
 
-    img {
-      max-width: 40px;
+    .countIn,
+    .countOut {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto 70px;
+
+      img {
+        max-width: 40px;
+      }
+      .desc {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        h1 {
+          font-size: 5em;
+          color: var(--primaryColor);
+          font-weight: 800;
+        }
+        p {
+          font-weight: 600;
+          color: rgba(0, 0, 0, 0.5);
+        }
+      }
     }
-    h1 {
-      font-size: 5em;
+    .countOut {
+      img {
+        transform: rotate(180deg);
+      }
     }
   }
-  .countOut {
-    img {
-      transform: rotate(180deg);
+  .camera {
+    background: black;
+    border-radius: 30px;
+    min-height: 60vh;
+    width: 100%;
+    margin: 50px auto;
+  }
+}
+//Person Counting CSS End
+
+//PPE Kit Check
+.ppeContainer {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+
+  .underline {
+    border-top: 2px solid var(--primaryColor);
+    width: 70%;
+    margin: 10px 0;
+  }
+
+  .details {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      width: 100%;
+      margin: 20px 0;
+
+      .item {
+        width: 70%;
+        display: flex;
+        margin: 10px 0;
+        justify-content: space-between;
+        align-items: center;
+
+        img {
+          max-width: 30px;
+        }
+
+        .statusImage {
+          display: flex;
+          flex: 0.6;
+          justify-content: flex-end;
+        }
+      }
     }
+  }
+
+  .cameraPPE {
+    width: 50%;
+    background: black;
+    min-height: 60vh;
+    border-radius: 30px;
+    overflow: hidden;
   }
 }

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="140.098" height="130.631" viewBox="0 0 140.098 130.631">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #64798a;
+      }
+
+      .cls-2 {
+        fill: #e1e6e9;
+      }
+
+      .cls-3 {
+        fill: #fcd462;
+      }
+
+      .cls-4 {
+        fill: #f6c358;
+      }
+
+      .cls-5 {
+        fill: #3ea69b;
+      }
+
+      .cls-6 {
+        fill: #44c4a1;
+      }
+    </style>
+  </defs>
+  <g id="picture" transform="translate(0 -15.822)">
+    <rect id="Rectangle_17" data-name="Rectangle 17" class="cls-1" width="140.098" height="130.631" transform="translate(0 15.822)"/>
+    <rect id="Rectangle_18" data-name="Rectangle 18" class="cls-2" width="110.162" height="102.72" transform="translate(14.968 29.785)"/>
+    <circle id="Ellipse_7" data-name="Ellipse 7" class="cls-3" cx="19.167" cy="19.167" r="19.167" transform="translate(73.764 31.832)"/>
+    <circle id="Ellipse_8" data-name="Ellipse 8" class="cls-4" cx="15.074" cy="15.074" r="15.074" transform="translate(77.857 35.925)"/>
+    <path id="Path_32" data-name="Path 32" class="cls-5" d="M171.945,278.3l37.961-54.447L244.891,278.3Z" transform="translate(-120.505 -145.794)"/>
+    <path id="Path_33" data-name="Path 33" class="cls-6" d="M50.031,278.3l37.961-54.447L122.977,278.3Z" transform="translate(-35.063 -145.794)"/>
+  </g>
+</svg>

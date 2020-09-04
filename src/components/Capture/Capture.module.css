@@ -82,6 +82,51 @@
   margin-left: 10px;
 }
 
+.thermalContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.thermalContainer .originalImage,
+.thermalContainer .thermalImage {
+  background: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.thermalContainer .originalImage h2,
+.thermalContainer .thermalImage h2 {
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.thermalContainer .originalImage img,
+.thermalContainer .thermalImage img {
+  min-width: 400px;
+  max-width: 500px;
+}
+
 .personContainer {
   display: -webkit-box;
   display: -ms-flexbox;

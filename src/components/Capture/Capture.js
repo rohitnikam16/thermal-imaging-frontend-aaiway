@@ -15,6 +15,7 @@ import correct from "../../assets/vectors/correct.svg";
 import { useParams } from "react-router";
 import { withRouter } from "react-router-dom";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
+import photo from "../../assets/vectors/picture-thumbnail.svg";
 
 const Capture = ({ history }) => {
   const { mode } = useParams();
@@ -97,10 +98,44 @@ const Options = ({ history }) => {
 const ThermalImaging = () => {
   const webcamRef = useRef(null);
 
+  const [url, setUrl] = useState("");
+  const [imageUrl, setImageUrl] = useState(photo);
+
   const capture = useCallback(() => {
     const image = webcamRef.current.getScreenshot();
     console.log(image);
   }, [webcamRef]);
+
+  const changeImageUrl = (e) => {
+    let reader = new FileReader();
+    setUrl(e.target.files[0]);
+    reader.onloadend = () => {
+      if (reader.result) {
+        setImageUrl(reader.result);
+        const formData = new FormData();
+        formData.append("file", e.target.files[0], e.target.files[0].name);
+        fetch("http://localhost:5001/thermal-screening/", {
+          method: "POST",
+          mode: "no-cors",
+          body: formData,
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((prediction) => {
+            console.log(prediction.data);
+          });
+      } else setImageUrl(photo);
+    };
+    try {
+      reader.readAsDataURL(e.target.files[0]);
+    } catch (error) {
+      setImageUrl(photo);
+    }
+  };
 
   const videoConstraints = {
     width: 600,
@@ -110,17 +145,34 @@ const ThermalImaging = () => {
 
   return (
     <div className={styles.thermalContainer}>
-      <Button onClick={capture} className={styles.captureBtn}>
+      <Button className={styles.captureBtn} component="label">
         Capture
         <CameraAltIcon fontSize="small" />
+        <input
+          required
+          type="file"
+          id="file"
+          name="image"
+          onChange={changeImageUrl}
+          accept="image/jpg, image/png, image/jpeg"
+          style={{ display: "none" }}
+        />
       </Button>
-      <Webcam
+      {/* <Webcam
         className={styles.webcam}
         ref={webcamRef}
         audio={false}
         screenshotFormat="image/jpeg"
         videoConstraints={videoConstraints}
-      />
+      /> */}
+      <div className={styles.thermalImage}>
+        <h2>Thermal Image</h2>
+        <img src={photo} alt="thermal" />
+      </div>
+      <div className={styles.originalImage}>
+        <h2>Original Image</h2>
+        <img src={photo} alt="original" />
+      </div>
     </div>
   );
 };

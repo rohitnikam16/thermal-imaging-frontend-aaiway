@@ -106,38 +106,41 @@ const ThermalImaging = () => {
     console.log(image);
   }, [webcamRef]);
 
-  const submitData = async (file) => {
-    const formData = new FormData();
-    formData.append("file", file, file.name);
-    await fetch("http://0.0.0.0:5001/thermal-screening", {
-      method: "POST",
-      mode: "no-cors",
-      body: formData,
-      headers: {
-        "content-type": "multipart/form-data",
-      },
-    })
-      .then(response => {
-        return response.text()
+  const submitData = async () => {
+    if (!url) {
+      alert("Please select a file first");
+    } else {
+      const formData = new FormData();
+      formData.append("file", url, url.name);
+      await fetch("http://0.0.0.0:5001/thermal-screening", {
+        method: "POST",
+        mode: "no-cors",
+        body: formData,
+        headers: {
+          "content-type": "multipart/form-data",
+        },
       })
-      .then((data) => {
-        // resolve(data ? JSON.parse(data) : {})
-        const temp = JSON.parse(data);
-        console.log(temp);
-      })
-      .catch((error) => {
-        alert(error)
-      })
+        .then((response) => {
+          return response.text();
+        })
+        .then((data) => {
+          // resolve(data ? JSON.parse(data) : {})
+          const temp = JSON.parse(data);
+          console.log(temp);
+        })
+        .catch((error) => {
+          alert(error);
+        });
+    }
   };
 
   const changeImageUrl = (e) => {
     let reader = new FileReader();
     setUrl(e.target.files[0]);
-    const temp = e.target.files[0];
+    // const temp = e.target.files[0];
     reader.onloadend = () => {
       if (reader.result) {
         setImageUrl(reader.result);
-        submitData(temp);
         console.log("api called");
       } else setImageUrl(photo);
     };
@@ -156,19 +159,24 @@ const ThermalImaging = () => {
 
   return (
     <div className={styles.thermalContainer}>
-      <Button className={styles.captureBtn} component="label">
-        Capture
-        <CameraAltIcon fontSize="small" />
-        <input
-          required
-          type="file"
-          id="file"
-          name="file"
-          onChange={changeImageUrl}
-          accept="image/jpg, image/png, image/jpeg"
-          style={{ display: "none" }}
-        />
-      </Button>
+      <form onSubmit={submitData} className={styles.captureBtnContainer}>
+        <Button className={styles.captureBtn} component="label">
+          Capture
+          <CameraAltIcon fontSize="small" />
+          <input
+            required
+            type="file"
+            id="file"
+            name="image"
+            onChange={changeImageUrl}
+            accept="image/jpg, image/png, image/jpeg"
+            style={{ display: "none" }}
+          />
+        </Button>
+        <Button type="submit" className={styles.captureBtn}>
+          Submit
+        </Button>
+      </form>
 
       <div className={styles.thermalImage}>
         <h2>Thermal Image</h2>

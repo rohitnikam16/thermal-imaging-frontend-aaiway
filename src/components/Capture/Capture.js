@@ -109,7 +109,7 @@ const ThermalImaging = () => {
   const submitData = async (file) => {
     const formData = new FormData();
     formData.append("file", file, file.name);
-    await fetch("http://localhost:5001/thermal-screening/", {
+    await fetch("http://0.0.0.0:5001/thermal-screening", {
       method: "POST",
       mode: "no-cors",
       body: formData,
@@ -117,12 +117,17 @@ const ThermalImaging = () => {
         "content-type": "multipart/form-data",
       },
     })
-      .then((response) => {
-        return response.json();
+      .then(response => {
+        return response.text()
       })
-      .then((prediction) => {
-        console.log(prediction.data);
-      });
+      .then((data) => {
+        // resolve(data ? JSON.parse(data) : {})
+        const temp = JSON.parse(data);
+        console.log(temp);
+      })
+      .catch((error) => {
+        alert(error)
+      })
   };
 
   const changeImageUrl = (e) => {
@@ -133,6 +138,7 @@ const ThermalImaging = () => {
       if (reader.result) {
         setImageUrl(reader.result);
         submitData(temp);
+        console.log("api called");
       } else setImageUrl(photo);
     };
     try {
@@ -157,19 +163,13 @@ const ThermalImaging = () => {
           required
           type="file"
           id="file"
-          name="image"
+          name="file"
           onChange={changeImageUrl}
           accept="image/jpg, image/png, image/jpeg"
           style={{ display: "none" }}
         />
       </Button>
-      {/* <Webcam
-        className={styles.webcam}
-        ref={webcamRef}
-        audio={false}
-        screenshotFormat="image/jpeg"
-        videoConstraints={videoConstraints}
-      /> */}
+
       <div className={styles.thermalImage}>
         <h2>Thermal Image</h2>
         <img src={photo} alt="thermal" />

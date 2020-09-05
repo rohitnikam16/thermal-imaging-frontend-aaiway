@@ -16,6 +16,8 @@ import { useParams } from "react-router";
 import { withRouter } from "react-router-dom";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import photo from "../../assets/vectors/picture-thumbnail.svg";
+import thermalAfterApi from "../../assets/images/therm1.jpg";
+import visualAfterApi from "../../assets/images/visual1.jpg";
 import axios from "axios";
 
 const Capture = ({ history }) => {
@@ -101,13 +103,16 @@ const ThermalImaging = () => {
 
   const [url, setUrl] = useState("");
   const [imageUrl, setImageUrl] = useState(photo);
+  const [originalImageUrl, setOriginalImageUrl] = useState(photo);
+  const [thermalImageUrl, setThermalImageUrl] = useState(photo);
 
   const capture = useCallback(() => {
     const image = webcamRef.current.getScreenshot();
     console.log(image);
   }, [webcamRef]);
 
-  const submitData = async () => {
+  const submitData = async (e) => {
+    e.preventDefault();
     const formData = new FormData();
     formData.append("image", url, url.name);
     // await fetch("http://0.0.0.0:5001/thermal-screening", {
@@ -130,16 +135,16 @@ const ThermalImaging = () => {
     //     alert(error);
     //   });
     await axios
-      .post(
-        "https://cors-anywhere.herokuapp.com/0.0.0.0:5001/thermal-screening",
-        formData,
-        {
-          headers: { "content-type": "multipart/form-data" },
-          method: "POST",
-        }
-      )
+      .post("http://0.0.0.0:5001/thermal-screening", formData, {
+        headers: { "content-type": "multipart/form-data" },
+        method: "POST",
+      })
       .then((res) => {
         console.log(res);
+        setTimeout(() => {
+          setThermalImageUrl(thermalAfterApi);
+          setOriginalImageUrl(visualAfterApi);
+        }, 0);
       })
       .catch((e) => console.log(e));
   };
@@ -151,7 +156,6 @@ const ThermalImaging = () => {
     reader.onloadend = () => {
       if (reader.result) {
         setImageUrl(reader.result);
-        console.log("api called");
       } else setImageUrl(photo);
     };
     try {
@@ -171,12 +175,12 @@ const ThermalImaging = () => {
     <div className={styles.thermalContainer}>
       <form onSubmit={submitData} className={styles.captureBtnContainer}>
         <Button className={styles.captureBtn} component="label">
-          Capture
+          Open File
           <CameraAltIcon fontSize="small" />
           <input
             required
             type="file"
-            id="file"
+            id="image"
             name="image"
             onChange={changeImageUrl}
             accept="image/jpg, image/png, image/jpeg"
@@ -190,11 +194,11 @@ const ThermalImaging = () => {
 
       <div className={styles.thermalImage}>
         <h2>Thermal Image</h2>
-        <img src={photo} alt="thermal" />
+        <img src={thermalImageUrl} alt="thermal" />
       </div>
       <div className={styles.originalImage}>
         <h2>Original Image</h2>
-        <img src={photo} alt="original" />
+        <img src={originalImageUrl} alt="original" />
       </div>
     </div>
   );

@@ -106,9 +106,9 @@ const ThermalImaging = () => {
     console.log(image);
   }, [webcamRef]);
 
-  const submitData = async () => {
+  const submitData = async (file) => {
     const formData = new FormData();
-    formData.append("file", url, url.name);
+    formData.append("file", file, file.name);
     await fetch("http://localhost:5001/thermal-screening/", {
       method: "POST",
       mode: "no-cors",
@@ -128,10 +128,11 @@ const ThermalImaging = () => {
   const changeImageUrl = (e) => {
     let reader = new FileReader();
     setUrl(e.target.files[0]);
+    const temp = e.target.files[0];
     reader.onloadend = () => {
       if (reader.result) {
         setImageUrl(reader.result);
-        submitData();
+        submitData(file);
       } else setImageUrl(photo);
     };
     try {

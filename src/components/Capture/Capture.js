@@ -106,28 +106,32 @@ const ThermalImaging = () => {
     console.log(image);
   }, [webcamRef]);
 
+  const submitData = async () => {
+    const formData = new FormData();
+    formData.append("file", url, url.name);
+    await fetch("http://localhost:5001/thermal-screening/", {
+      method: "POST",
+      mode: "no-cors",
+      body: formData,
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((prediction) => {
+        console.log(prediction.data);
+      });
+  };
+
   const changeImageUrl = (e) => {
     let reader = new FileReader();
     setUrl(e.target.files[0]);
     reader.onloadend = () => {
       if (reader.result) {
         setImageUrl(reader.result);
-        const formData = new FormData();
-        formData.append("file", e.target.files[0], e.target.files[0].name);
-        fetch("http://localhost:5001/thermal-screening/", {
-          method: "POST",
-          mode: "no-cors",
-          body: formData,
-          headers: {
-            "content-type": "multipart/form-data",
-          },
-        })
-          .then((response) => {
-            return response.json();
-          })
-          .then((prediction) => {
-            console.log(prediction.data);
-          });
+        submitData();
       } else setImageUrl(photo);
     };
     try {

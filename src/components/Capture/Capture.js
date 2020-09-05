@@ -16,6 +16,7 @@ import { useParams } from "react-router";
 import { withRouter } from "react-router-dom";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import photo from "../../assets/vectors/picture-thumbnail.svg";
+import axios from "axios";
 
 const Capture = ({ history }) => {
   const { mode } = useParams();
@@ -107,31 +108,40 @@ const ThermalImaging = () => {
   }, [webcamRef]);
 
   const submitData = async () => {
-    if (!url) {
-      alert("Please select a file first");
-    } else {
-      const formData = new FormData();
-      formData.append("file", url, url.name);
-      await fetch("http://0.0.0.0:5001/thermal-screening", {
-        method: "POST",
-        mode: "no-cors",
-        body: formData,
-        headers: {
-          "content-type": "multipart/form-data",
-        },
+    const formData = new FormData();
+    formData.append("file", url, url.name);
+    // await fetch("http://0.0.0.0:5001/thermal-screening", {
+    //   method: "POST",
+    //   mode: "no-cors",
+    //   body: formData,
+    //   headers: {
+    //     "content-type": "multipart/form-data",
+    //   },
+    // })
+    //   .then((response) => {
+    //     return response.text();
+    //   })
+    //   .then((data) => {
+    //     // resolve(data ? JSON.parse(data) : {})
+    //     const temp = JSON.parse(data);
+    //     console.log(temp);
+    //   })
+    //   .catch((error) => {
+    //     alert(error);
+    //   });
+    await axios
+      .post(
+        "https://cors-anywhere.herokuapp.com/0.0.0.0:5001/thermal-screening",
+        formData,
+        {
+          headers: { "content-type": "multipart/form-data" },
+          method: "POST",
+        }
+      )
+      .then((res) => {
+        console.log(res);
       })
-        .then((response) => {
-          return response.text();
-        })
-        .then((data) => {
-          // resolve(data ? JSON.parse(data) : {})
-          const temp = JSON.parse(data);
-          console.log(temp);
-        })
-        .catch((error) => {
-          alert(error);
-        });
-    }
+      .catch((e) => console.log(e));
   };
 
   const changeImageUrl = (e) => {

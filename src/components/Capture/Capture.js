@@ -109,7 +109,7 @@ const ThermalImaging = () => {
 
   const submitData = async () => {
     const formData = new FormData();
-    formData.append("file", url, url.name);
+    formData.append("image", url, url.name);
     // await fetch("http://0.0.0.0:5001/thermal-screening", {
     //   method: "POST",
     //   mode: "no-cors",

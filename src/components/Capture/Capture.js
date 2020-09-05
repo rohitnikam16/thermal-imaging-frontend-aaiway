@@ -170,7 +170,7 @@ const ThermalImaging = () => {
             name="image"
             onChange={changeImageUrl}
             accept="image/jpg, image/png, image/jpeg"
-            style={{ display: "none" }}
+            style={{ opacity: "0", width: "0" }}
           />
         </Button>
         <Button type="submit" className={styles.captureBtn}>

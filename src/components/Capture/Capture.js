@@ -132,7 +132,7 @@ const ThermalImaging = () => {
     reader.onloadend = () => {
       if (reader.result) {
         setImageUrl(reader.result);
-        submitData(file);
+        submitData(temp);
       } else setImageUrl(photo);
     };
     try {

@@ -58,8 +58,9 @@
 .thermalContainer {
   background: black;
   width: 100%;
-  height: 100vh;
+  height: 85vh;
   position: relative;
+  border-radius: 20px;
 }
 
 .captureBtnContainer {
@@ -77,6 +78,8 @@
           align-items: center;
   -webkit-transform-origin: center;
           transform-origin: center;
+  -webkit-transform: translate3d(-50%, 0, 0);
+          transform: translate3d(-50%, 0, 0);
 }
 
 .captureBtn {

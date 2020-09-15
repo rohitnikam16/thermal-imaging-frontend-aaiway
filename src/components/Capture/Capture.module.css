@@ -144,6 +144,19 @@
   max-width: 500px;
 }
 
+.thermalContainer .visualContainer {
+  position: relative;
+}
+
+.thermalContainer .visualContainer .rect {
+  position: absolute;
+  -webkit-transform: translate(10%, 50%);
+          transform: translate(10%, 50%);
+  width: 100px;
+  height: 100px;
+  border: 2px solid black;
+}
+
 .personContainer {
   display: -webkit-box;
   display: -ms-flexbox;

@@ -96,6 +96,16 @@
       max-width: 500px;
     }
   }
+  .visualContainer {
+    position: relative;
+    .rect {
+      position: absolute;
+      transform: translate(10%, 50%);
+      width: 100px;
+      height: 100px;
+      border: 2px solid black;
+    }
+  }
 }
 
 //Person Counting

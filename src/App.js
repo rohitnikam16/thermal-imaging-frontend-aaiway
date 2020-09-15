@@ -10,6 +10,7 @@ import {
   Capture,
   Mode,
 } from "./components";
+import { GlobalContextProvider } from "./context/GlobalContext";
 
 const App = () => {
   return (

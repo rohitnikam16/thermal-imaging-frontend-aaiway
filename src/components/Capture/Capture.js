@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useContext } from "react";
 import styles from "./Capture.module.css";
 import Webcam from "react-webcam";
 import {
@@ -19,6 +19,7 @@ import photo from "../../assets/vectors/picture-thumbnail.svg";
 import thermalAfterApi from "../../assets/images/therm1.jpg";
 import visualAfterApi from "../../assets/images/visual1.jpg";
 import axios from "axios";
+import GlobalContext from "../../context/GlobalContext";
 
 const Capture = ({ history }) => {
   const { mode } = useParams();
@@ -106,6 +107,15 @@ const ThermalImaging = () => {
   const [originalImageUrl, setOriginalImageUrl] = useState(photo);
   const [thermalImageUrl, setThermalImageUrl] = useState(photo);
 
+  const {
+    thermalAfterApi,
+    visualAfterApi,
+    setThermalAfterApi,
+    setVisualAfterApi,
+  } = useContext(GlobalContext);
+
+  console.log(thermalAfterApi);
+
   const capture = useCallback(() => {
     const image = webcamRef.current.getScreenshot();
     console.log(image);
@@ -142,9 +152,9 @@ const ThermalImaging = () => {
       .then((res) => {
         console.log(res);
         setTimeout(() => {
-          setThermalImageUrl(thermalAfterApi);
-          setOriginalImageUrl(visualAfterApi);
-        }, 0);
+          setThermalAfterApi(thermalAfterApi);
+          setVisualAfterApi(visualAfterApi);
+        }, 100);
       })
       .catch((e) => console.log(e));
   };
@@ -194,11 +204,14 @@ const ThermalImaging = () => {
 
       <div className={styles.thermalImage}>
         <h2>Thermal Image</h2>
-        <img src={thermalImageUrl} alt="thermal" />
+        <img src={thermalAfterApi} alt="thermal" />
       </div>
       <div className={styles.originalImage}>
         <h2>Original Image</h2>
-        <img src={originalImageUrl} alt="original" />
+        <div className={styles.visualContainer}>
+          <div className={styles.rect}></div>
+          <img src={visualAfterApi} alt="original" />
+        </div>
       </div>
     </div>
   );
@@ -285,7 +298,7 @@ const PPE = () => {
         </div>
         <div className={styles.list}>
           {list.map((item) => (
-            <div className={styles.item}>
+            <div key={item.name} className={styles.item}>
               <img src={item.image} alt="ppe-check-list-item" />
               <h3>{item.name}</h3>
               <div className={styles.statusImage}>

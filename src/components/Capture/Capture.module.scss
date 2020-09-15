@@ -9,9 +9,20 @@
   width: var(--fixedWidth);
   min-height: 100vh;
   overflow: hidden !important;
+  .card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 20px 30px;
+    width: 100%;
+    box-shadow: 2px 2px 20px 0px rgba($color: #000000, $alpha: 0.1);
+  }
 }
 .webcam {
-  border-radius: 25px;
+  // border-radius: 25px;
   margin: auto;
   pointer-events: none !important;
 }
@@ -39,13 +50,7 @@
     width: 100% !important;
   }
 }
-.thermalContainer {
-  background: black;
-  width: 100%;
-  height: 85vh;
-  position: relative;
-  border-radius: 20px;
-}
+
 .captureBtnContainer {
   position: absolute !important;
   bottom: 50px !important;
@@ -72,29 +77,97 @@
 
 //Thermal
 .thermalContainer {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  height: 85vh;
+  width: 100%;
+  position: relative;
+  background: white;
+  border-radius: 25px;
+  overflow: hidden;
 
-  .originalImage,
-  .thermalImage {
-    background: white;
+  .details {
+    height: 85vh;
+    padding: 50px;
     display: flex;
+    position: relative;
+    justify-content: flex-start;
+    align-items: flex-start;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    border-radius: 20px;
-    h2 {
-      font-weight: 800;
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-      text-transform: uppercase;
+
+    .title {
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 300;
+        color: rgba($color: #000000, $alpha: 0.8);
+      }
     }
-    img {
-      min-width: 400px;
-      max-width: 500px;
+    .tempContainer {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .temperature {
+        margin-top: 50px;
+        width: 100px;
+        height: 300px;
+        background: white;
+        box-shadow: 2px 2px 10px -2px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        overflow: hidden;
+        .reading {
+          width: 100%;
+          height: 50%;
+          background: green;
+        }
+        .readingValue {
+          margin-bottom: 5px;
+          p {
+            font-weight: 600;
+            color: rgba(0, 0, 0, 0.6);
+          }
+        }
+      }
     }
+    .tempCard {
+      margin: 25px auto;
+
+      .tempValue {
+        h1 {
+          font-size: 4rem;
+          display: flex;
+          align-items: flex-start;
+          color: rgb(8, 153, 8);
+          span {
+            font-size: 1rem;
+            margin-top: 15px;
+            margin-left: 5px;
+          }
+        }
+      }
+      .userData {
+        margin: 10px 0;
+      }
+      .icon {
+        img {
+          width: 25px;
+          opacity: 0.4;
+        }
+        h3 {
+          font-size: 0.9rem;
+          margin-top: 10px;
+          color: rgba($color: #000000, $alpha: 0.8);
+        }
+      }
+    }
+  }
+  .camera,
+  .webcam {
+    width: 100% !important;
+    height: 100% !important;
+    background: black;
   }
 }
 

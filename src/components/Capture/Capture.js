@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useContext } from "react";
 import styles from "./Capture.module.css";
 import Webcam from "react-webcam";
 import {
@@ -6,6 +6,7 @@ import {
   Select,
   MenuItem,
   InputLabel,
+  Grid,
   FormControl,
 } from "@material-ui/core";
 import downArrow from "../../assets/vectors/down-arrow.svg";
@@ -18,7 +19,10 @@ import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import photo from "../../assets/vectors/picture-thumbnail.svg";
 import thermalAfterApi from "../../assets/images/therm1.jpg";
 import visualAfterApi from "../../assets/images/visual1.jpg";
+import thermo from "../../assets/vectors/thermo.svg";
 import axios from "axios";
+import GlobalContext from "../../context/GlobalContext";
+import classNames from "classnames";
 
 const Capture = ({ history }) => {
   const { mode } = useParams();
@@ -106,6 +110,15 @@ const ThermalImaging = () => {
   const [originalImageUrl, setOriginalImageUrl] = useState(photo);
   const [thermalImageUrl, setThermalImageUrl] = useState(photo);
 
+  const {
+    thermalAfterApi,
+    visualAfterApi,
+    setThermalAfterApi,
+    setVisualAfterApi,
+  } = useContext(GlobalContext);
+
+  console.log(thermalAfterApi);
+
   const capture = useCallback(() => {
     const image = webcamRef.current.getScreenshot();
     console.log(image);
@@ -142,9 +155,9 @@ const ThermalImaging = () => {
       .then((res) => {
         console.log(res);
         setTimeout(() => {
-          setThermalImageUrl(thermalAfterApi);
-          setOriginalImageUrl(visualAfterApi);
-        }, 1000);
+          setThermalAfterApi(thermalAfterApi);
+          setVisualAfterApi(visualAfterApi);
+        }, 100);
       })
       .catch((e) => console.log(e));
   };
@@ -165,10 +178,12 @@ const ThermalImaging = () => {
     }
   };
 
+  const thermalCameraRef = useRef(null);
+
   const videoConstraints = {
-    width: 600,
-    height: 450,
-    facingMode: "selfie",
+    width: 100,
+    height: 100,
+    // facingMode: "selfie",
   };
 
   return (
@@ -192,14 +207,49 @@ const ThermalImaging = () => {
         </Button>
       </form>
 
-      <div className={styles.thermalImage}>
-        <h2>Thermal Image</h2>
-        <img src={thermalImageUrl} alt="thermal" />
-      </div>
-      <div className={styles.originalImage}>
-        <h2>Original Image</h2>
-        <img src={originalImageUrl} alt="original" />
-      </div>
+      <Grid container>
+        <Grid item md={3}>
+          <div className={styles.details}>
+            <div className={styles.title}>
+              <h2>Thermal Imaging</h2>
+            </div>
+            <div className={styles.tempContainer}>
+              <div className={styles.temperature}>
+                <div className={styles.readingValue}>
+                  <p>30°C</p>
+                </div>
+                <div className={styles.reading}></div>
+              </div>
+            </div>
+            <div className={classNames(styles.tempCard, styles.card)}>
+              <div className={styles.icon}>
+                <img src={thermo} alt="thermometer" />
+                {/* <h3>Temperature</h3> */}
+                {/* <div className={styles.userData}>
+                  <h4>Anurag Pal</h4>
+                  <p>Wearing Glasses</p>
+                </div> */}
+              </div>
+              <div className={styles.tempValue}>
+                <h1>
+                  30<span>°C</span>
+                </h1>
+              </div>
+            </div>
+          </div>
+        </Grid>
+        <Grid item md={9}>
+          <div className={styles.camera}>
+            <Webcam
+              className={styles.webcam}
+              ref={thermalCameraRef}
+              audio={false}
+              screenshotFormat="image/jpeg"
+              videoConstraints={videoConstraints}
+            />
+          </div>
+        </Grid>
+      </Grid>
     </div>
   );
 };
@@ -285,7 +335,7 @@ const PPE = () => {
         </div>
         <div className={styles.list}>
           {list.map((item) => (
-            <div className={styles.item}>
+            <div key={item.name} className={styles.item}>
               <img src={item.image} alt="ppe-check-list-item" />
               <h3>{item.name}</h3>
               <div className={styles.statusImage}>

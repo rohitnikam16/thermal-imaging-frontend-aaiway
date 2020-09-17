@@ -8,11 +8,14 @@ import {
   InputLabel,
   Grid,
   FormControl,
+  Avatar,
+  CircularProgress,
 } from "@material-ui/core";
 import downArrow from "../../assets/vectors/down-arrow.svg";
 import upArrow from "../../assets/vectors/up-arrow.svg";
 import wrong from "../../assets/vectors/wrong.svg";
 import correct from "../../assets/vectors/correct.svg";
+import sunglasses from "../../assets/vectors/sunglasses.svg";
 import { useParams } from "react-router";
 import { withRouter } from "react-router-dom";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
@@ -106,9 +109,17 @@ const ThermalImaging = () => {
   const webcamRef = useRef(null);
 
   const [url, setUrl] = useState("");
+  const [name, setName] = useState("Name");
+  const [status, setStatus] = useState("STATUS");
+  const [glasses, setGlasses] = useState(false);
+  const [temp, setTemp] = useState(37.0);
   const [imageUrl, setImageUrl] = useState(photo);
-  const [originalImageUrl, setOriginalImageUrl] = useState(photo);
-  const [thermalImageUrl, setThermalImageUrl] = useState(photo);
+  const [thermalImage, setThermalImage] = useState(photo);
+  const [originalImage, setOriginalImage] = useState(photo);
+  const [progress, setProgress] = useState(false);
+
+  const lowest = 35;
+  const highest = 41;
 
   const {
     thermalAfterApi,
@@ -147,6 +158,7 @@ const ThermalImaging = () => {
     //   .catch((error) => {
     //     alert(error);
     //   });
+    setProgress(true);
     await axios
       .post("http://0.0.0.0:5001/thermal-screening", formData, {
         headers: { "content-type": "multipart/form-data" },
@@ -154,10 +166,18 @@ const ThermalImaging = () => {
       })
       .then((res) => {
         console.log(res);
-        setTimeout(() => {
-          setThermalAfterApi(thermalAfterApi);
-          setVisualAfterApi(visualAfterApi);
-        }, 100);
+        return res.data;
+      })
+      .then((data) => {
+        setName(data.name);
+        setTemp(data.temperature.toFixed(2));
+        data.temperature <= 37 ? setStatus("PASS") : setStatus("FAIL");
+        setGlasses(data.wearingGlass === "True" ? true : false);
+        const thermal = data.thermalImg.slice(2, data.thermalImg.length - 1);
+        const original = data.visualImg.slice(2, data.visualImg.length - 1);
+        setThermalImage(`data:image/jpg;base64,${thermal}`);
+        setOriginalImage(`data:image/jpg;base64,${original}`);
+        setProgress(false);
       })
       .catch((e) => console.log(e));
   };
@@ -186,60 +206,96 @@ const ThermalImaging = () => {
     // facingMode: "selfie",
   };
 
+  const time = new Date();
+
+  const getTempHeight = (i) => {
+    return (100 / (highest - lowest)) * (i - lowest);
+  };
+
   return (
     <div className={styles.thermalContainer}>
-      <form onSubmit={submitData} className={styles.captureBtnContainer}>
-        <Button className={styles.captureBtn} component="label">
-          Open File
-          <CameraAltIcon fontSize="small" />
-          <input
-            required
-            type="file"
-            id="image"
-            name="image"
-            onChange={changeImageUrl}
-            accept="image/jpg, image/png, image/jpeg"
-            style={{ opacity: "0", width: "0" }}
-          />
-        </Button>
-        <Button type="submit" className={styles.captureBtn}>
-          Submit
-        </Button>
-      </form>
-
       <Grid container>
-        <Grid item md={3}>
+        <Grid item md={3} className={styles.leftData}>
           <div className={styles.details}>
             <div className={styles.title}>
               <h2>Thermal Imaging</h2>
             </div>
             <div className={styles.tempContainer}>
               <div className={styles.temperature}>
-                <div className={styles.readingValue}>
-                  <p>30°C</p>
+                <div
+                  className={styles.reading}
+                  style={{
+                    height: `${getTempHeight(temp).toString()}%`,
+                    background: temp <= 37 ? "green" : "rgb(172, 4, 4)",
+                  }}
+                >
+                  <div className={styles.readingValue}>
+                    <p>{temp}°C</p>
+                  </div>
                 </div>
-                <div className={styles.reading}></div>
               </div>
             </div>
-            <div className={classNames(styles.tempCard, styles.card)}>
+            {/* <div className={classNames(styles.tempCard, styles.card)}>
               <div className={styles.icon}>
                 <img src={thermo} alt="thermometer" />
-                {/* <h3>Temperature</h3> */}
-                {/* <div className={styles.userData}>
-                  <h4>Anurag Pal</h4>
-                  <p>Wearing Glasses</p>
-                </div> */}
               </div>
               <div className={styles.tempValue}>
                 <h1>
                   30<span>°C</span>
                 </h1>
               </div>
+            </div> */}
+            <div className={classNames(styles.nameCard, styles.card)}>
+              <div className={styles.icon}>
+                <Avatar>A</Avatar>
+              </div>
+              <div className={styles.name}>
+                <h3>{name}</h3>
+                <p>
+                  {time.getDate()}/{time.getMonth()}/{time.getFullYear()}
+                </p>
+              </div>
+            </div>
+            <div className={classNames(styles.glassesCard, styles.card)}>
+              <div className={styles.icon}>
+                <img src={sunglasses} alt="sunglasses" />
+              </div>
+              <div className={styles.name}>
+                <h3>{glasses ? "Wearing" : "Not Wearing"}</h3>
+              </div>
+            </div>
+            <div
+              className={classNames(styles.statusCard, styles.card)}
+              style={{ background: temp <= 37 ? "green" : "rgb(172,4,4)" }}
+            >
+              <h1>{status}</h1>
+            </div>
+            <div className={styles.progress}>
+              <CircularProgress style={{ opacity: progress ? "1" : "0" }} />
             </div>
           </div>
+
+          <form onSubmit={submitData} className={styles.captureBtnContainer}>
+            <Button className={styles.captureBtn} component="label">
+              Open File
+              <CameraAltIcon fontSize="small" />
+              <input
+                required
+                type="file"
+                id="image"
+                name="image"
+                onChange={changeImageUrl}
+                accept="image/jpg, image/png, image/jpeg"
+                style={{ opacity: "0", width: "0" }}
+              />
+            </Button>
+            <Button type="submit" className={styles.captureBtn}>
+              Submit
+            </Button>
+          </form>
         </Grid>
         <Grid item md={9}>
-          <div className={styles.camera}>
+          {/* <div className={styles.camera}>
             <Webcam
               className={styles.webcam}
               ref={thermalCameraRef}
@@ -247,6 +303,10 @@ const ThermalImaging = () => {
               screenshotFormat="image/jpeg"
               videoConstraints={videoConstraints}
             />
+          </div> */}
+          <div className={styles.images}>
+            <img src={thermalImage} alt="thermal" />
+            <img src={originalImage} alt="thermal" />
           </div>
         </Grid>
       </Grid>

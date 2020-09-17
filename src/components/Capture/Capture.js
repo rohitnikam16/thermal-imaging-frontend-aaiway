@@ -111,7 +111,7 @@ const ThermalImaging = () => {
   const [url, setUrl] = useState("");
   const [name, setName] = useState("Name");
   const [status, setStatus] = useState("STATUS");
-  const [glasses, setGlasses] = useState(false);
+  const [glasses, setGlasses] = useState("Glasses");
   const [temp, setTemp] = useState(37.0);
   const [imageUrl, setImageUrl] = useState(photo);
   const [thermalImage, setThermalImage] = useState(photo);
@@ -159,6 +159,12 @@ const ThermalImaging = () => {
     //     alert(error);
     //   });
     setProgress(true);
+    setName("Name");
+    setGlasses("Glasses");
+    setThermalImage(photo);
+    setOriginalImage(photo);
+    setTemp(37);
+    setStatus("Status");
     await axios
       .post("http://0.0.0.0:5001/thermal-screening", formData, {
         headers: { "content-type": "multipart/form-data" },
@@ -172,7 +178,7 @@ const ThermalImaging = () => {
         setName(data.name);
         setTemp(data.temperature.toFixed(2));
         data.temperature <= 37 ? setStatus("PASS") : setStatus("FAIL");
-        setGlasses(data.wearingGlass === "True" ? true : false);
+        setGlasses(data.wearingGlass === "True" ? "Wearing" : "Not Wearing");
         const thermal = data.thermalImg.slice(2, data.thermalImg.length - 1);
         const original = data.visualImg.slice(2, data.visualImg.length - 1);
         setThermalImage(`data:image/jpg;base64,${thermal}`);
@@ -247,7 +253,11 @@ const ThermalImaging = () => {
             </div> */}
             <div className={classNames(styles.nameCard, styles.card)}>
               <div className={styles.icon}>
-                <Avatar>A</Avatar>
+                {originalImage.length ? (
+                  <Avatar src={originalImage} />
+                ) : (
+                  <Avatar>N</Avatar>
+                )}
               </div>
               <div className={styles.name}>
                 <h3>{name}</h3>
@@ -261,7 +271,7 @@ const ThermalImaging = () => {
                 <img src={sunglasses} alt="sunglasses" />
               </div>
               <div className={styles.name}>
-                <h3>{glasses ? "Wearing" : "Not Wearing"}</h3>
+                <h3>{glasses}</h3>
               </div>
             </div>
             <div

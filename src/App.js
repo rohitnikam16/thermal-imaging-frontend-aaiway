@@ -19,7 +19,7 @@ const App = () => {
         <div className={styles.contorlPanel}>
           <ControlPanel />
         </div>
-        <Switch>
+        <Switch basename={process.env.PUBLIC_URL}>
           <Route path="/" exact component={Login} />
           <Route path="/register" exact component={Register} />
           <Route path="/mode" exact component={Mode} />

@@ -3,7 +3,6 @@ import styles from "./Register.module.css";
 import { Button, TextField, Grid } from "@material-ui/core";
 import videoFile from "../../assets/video/video.webm";
 import Webcam from "react-webcam";
-import { SocketProvider } from "socket.io-react";
 import io from "socket.io-client";
 
 const ENDPOINT = "localhost:5001";
@@ -13,6 +12,7 @@ const Register = () => {
   const [name, setName] = useState("");
   const [nameWidth, setNameWidth] = useState(4);
   const [cameraWidth, setCameraWidth] = useState(8);
+  const [photoFromSserver, setPhotoFromServer] = useState("");
 
   const onClickRegister = () => {
     setNameWidth(4);
@@ -37,7 +37,14 @@ const Register = () => {
   useEffect(() => {
     socket = io.connect(ENDPOINT);
     socket.on("connect", function () {
-      // socket.send("Client Connected");
+      socket.send("Client Connected From react");
+    });
+    socket.on("message", (msg) => {
+      console.log(msg);
+    });
+    socket.on("stream", (data) => {
+      // console.log(data);
+      setPhotoFromServer(data.image);
     });
     // while(socket.connected){
 
@@ -45,7 +52,7 @@ const Register = () => {
     // socket.on("connect", (msg) => {
     //   if (msg === "Client Connected, 1") console.log(capture());
     // });
-  }, [io, ENDPOINT]);
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -105,13 +112,14 @@ const Register = () => {
         </Grid>
         {cameraWidth ? (
           <Grid md={cameraWidth} className={styles.webcamContainer} item>
-            <Webcam
+            {/* <Webcam
               className={styles.webcam}
               ref={cameraRef}
               audio={false}
               screenshotFormat="image/jpeg"
               videoConstraints={videoConstraints}
-            />
+            /> */}
+            <img src={photoFromSserver} alt="server" />
           </Grid>
         ) : null}
       </Grid>

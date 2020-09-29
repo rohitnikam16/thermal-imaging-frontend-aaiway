@@ -37,13 +37,13 @@ const Register = () => {
   useEffect(() => {
     socket = io.connect(ENDPOINT);
     socket.on("connect", function () {
-      socket.send("Client Connected From react");
+      socket.send("Client connected from React");
     });
     socket.on("message", (msg) => {
       console.log(msg);
     });
+
     socket.on("stream", (data) => {
-      // console.log(data);
       setPhotoFromServer(data.image);
     });
     // while(socket.connected){

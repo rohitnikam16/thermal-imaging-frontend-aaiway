@@ -489,4 +489,116 @@
   border-radius: 30px;
   overflow: hidden;
 }
+
+.attendanceContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  height: 60vh;
+  width: 100%;
+  background: white;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.attendanceContainer .prev {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 600;
+}
+
+.attendanceContainer .cardStack {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px 0 0 15px;
+  padding: 50px;
+}
+
+.attendanceContainer .cardStack h2 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: rgba(0, 0, 0, 0.7);
+  text-transform: uppercase;
+}
+
+.attendanceContainer .cardStack .mainCard {
+  margin: 20px 0;
+}
+
+.attendanceContainer .cardStack .mainCard .mainCardComponent {
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.attendanceContainer .cardStack .mainCard .mainCardComponent .profile .avatar {
+  width: 120px;
+  height: 120px;
+}
+
+.attendanceContainer .cardStack .mainCard .mainCardComponent .details {
+  text-align: left;
+  width: 100%;
+  margin-left: 10px;
+}
+
+.attendanceContainer .cardStack .mainCard .mainCardComponent .details p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.attendanceContainer .cardStack .stack .stackItem {
+  margin: 15px 0;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #ffe1e1bd;
+}
+
+.attendanceContainer .cardStack .stack .stackItem h3 {
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.attendanceContainer .cardStack .stack .stackItem .avtr {
+  background: var(--primaryColor) !important;
+}
+
+.attendanceContainer .cameraView {
+  width: 100%;
+  height: 100%;
+  background: black;
+}
+
+.attendanceContainer .cameraView img {
+  width: 100%;
+  height: 100%;
+}
 /*# sourceMappingURL=Capture.module.css.map */

@@ -10,6 +10,7 @@ import {
   FormControl,
   Avatar,
   CircularProgress,
+  Card,
 } from "@material-ui/core";
 import downArrow from "../../assets/vectors/down-arrow.svg";
 import upArrow from "../../assets/vectors/up-arrow.svg";
@@ -26,6 +27,13 @@ import thermo from "../../assets/vectors/thermo.svg";
 import axios from "axios";
 import GlobalContext from "../../context/GlobalContext";
 import classNames from "classnames";
+import Skeleton from "@material-ui/lab/Skeleton";
+import face1 from "../../assets/images/face1.jpg";
+import face2 from "../../assets/images/face2.jpg";
+import io from "socket.io-client";
+
+const ENDPOINT = "localhost:5001";
+let socket;
 
 const Capture = ({ history }) => {
   const { mode } = useParams();
@@ -40,7 +48,7 @@ const Capture = ({ history }) => {
     case "attendance":
       return (
         <div className={styles.container}>
-          <Options history={history} />
+          <Attendance history={history} />
         </div>
       );
     case "thermal":
@@ -428,6 +436,127 @@ const PPE = () => {
           videoConstraints={videoConstraints}
         />
       </div>
+    </div>
+  );
+};
+
+const Attendance = () => {
+  const [cameraImage, setCameraImage] = useState("");
+  const [name, setName] = useState("");
+  const [stillImage, setStillImage] = useState("");
+  const [flag, setFlag] = useState(0);
+  const [innerFlag, setInnerFlag] = useState(flag);
+
+  React.useEffect(() => {
+    socket = io.connect(ENDPOINT);
+    socket.on("connect", function () {
+      socket.send("Client connected from React");
+    });
+    socket.on("message", (msg) => {
+      console.log(msg);
+    });
+
+    socket.on("stream", (data) => {
+      setCameraImage(data.image);
+      setName(data.name);
+      setStillImage(data.face)
+      if(!flag) setFlag(1)
+    });
+  }, [flag]);
+
+  
+
+  const temp = new Date();
+
+  const students = [
+    {
+      name: "Person 1",
+      picture: face1,
+    },
+    {
+      name: "Person 2",
+      picture: face2,
+    },
+    {
+      name: "Person 3",
+      picture: face1,
+    },
+    {
+      name: "Person 4",
+      picture: face2,
+    },
+  ];
+
+  const getTime = () => {
+    const tempTime = `${temp.getHours()}:${temp.getMinutes()}:
+      ${temp.getSeconds()}`;
+
+    return tempTime;
+  };
+
+  const getDate = () => {
+    const tempTime = `${temp.getDate()}/${temp.getMonth()}/
+      ${temp.getFullYear()}`;
+
+    return tempTime;
+  };
+
+  return (
+    <div className={styles.attendanceContainer}>
+      <Grid container spacing={0}>
+        <Grid item md={4}>
+          <div className={styles.cardStack}>
+            <div clasName={styles.heading}>
+              <h2>Attendance</h2>
+            </div>
+            <div className={styles.mainCard}>
+              <Card className={styles.mainCardComponent}>
+                <div className={styles.profile}>
+                  <Avatar
+                    className={styles.avatar}
+                    variant="rounded"
+                    src={stillImage}
+                  >
+                    <Skeleton variant="rect" width={120} height={120} />
+                  </Avatar>
+                </div>
+                <div className={styles.details}>
+                  <p>
+                    Name :{" "}
+                    {name ? name : <Skeleton width={100} variant="text" />}
+                  </p>
+                  <p>
+                    In time :{" "}
+                    {flag ? getTime() : <Skeleton variant="text" width={100} />}
+                  </p>
+                  <p>
+                    In Date :
+                    {flag ? getDate() : <Skeleton variant="text" width={100} />}
+                  </p>
+                </div>
+              </Card>
+            </div>
+            <p className={styles.prev}>Previously Scanned</p>
+            <div className={styles.stack}>
+              {students.map((student, i) => {
+                return (
+                  <Card className={styles.stackItem}>
+                    <Avatar className={styles.avtr} src={student.picture}>
+                      P{i + 1}
+                    </Avatar>
+                    <h3>{student.name}</h3>
+                  </Card>
+                );
+              })}
+            </div>
+          </div>
+        </Grid>
+        <Grid item md={8}>
+          <div className={styles.cameraView}>
+            <img src={cameraImage} alt="camera-view" />
+          </div>
+        </Grid>
+      </Grid>
     </div>
   );
 };

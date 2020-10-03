@@ -459,12 +459,10 @@ const Attendance = () => {
     socket.on("stream", (data) => {
       setCameraImage(data.image);
       setName(data.name);
-      setStillImage(data.face)
-      if(!flag) setFlag(1)
+      setStillImage(data.face);
+      if (!flag) setFlag(1);
     });
   }, [flag]);
-
-  
 
   const temp = new Date();
 
@@ -475,6 +473,14 @@ const Attendance = () => {
     },
     {
       name: "Person 2",
+      picture: face2,
+    },
+    {
+      name: "Person 3",
+      picture: face1,
+    },
+    {
+      name: "Person 4",
       picture: face2,
     },
     {
@@ -503,10 +509,10 @@ const Attendance = () => {
 
   return (
     <div className={styles.attendanceContainer}>
-      <Grid container spacing={0}>
-        <Grid item md={4}>
+      <Grid className={styles.gridContainer} container spacing={0}>
+        <Grid item lg={4} xl={4} md={6} sm={12} xs={12}>
           <div className={styles.cardStack}>
-            <div clasName={styles.heading}>
+            <div className={styles.heading}>
               <h2>Attendance</h2>
             </div>
             <div className={styles.mainCard}>
@@ -522,15 +528,15 @@ const Attendance = () => {
                 </div>
                 <div className={styles.details}>
                   <p>
-                    Name :{" "}
+                    {/* Name :{" "} */}
                     {name ? name : <Skeleton width={100} variant="text" />}
                   </p>
                   <p>
-                    In time :{" "}
+                    {/* In time :{" "} */}
                     {flag ? getTime() : <Skeleton variant="text" width={100} />}
                   </p>
                   <p>
-                    In Date :
+                    {/* In Date : */}
                     {flag ? getDate() : <Skeleton variant="text" width={100} />}
                   </p>
                 </div>
@@ -540,7 +546,11 @@ const Attendance = () => {
             <div className={styles.stack}>
               {students.map((student, i) => {
                 return (
-                  <Card className={styles.stackItem}>
+                  <Card
+                    style={{ marginTop: i ? "15px" : "0" }}
+                    key={i}
+                    className={styles.stackItem}
+                  >
                     <Avatar className={styles.avtr} src={student.picture}>
                       P{i + 1}
                     </Avatar>
@@ -551,9 +561,11 @@ const Attendance = () => {
             </div>
           </div>
         </Grid>
-        <Grid item md={8}>
+        <Grid item lg={8} xl={8} md={6} sm={12} xs={12}>
           <div className={styles.cameraView}>
-            <img src={cameraImage} alt="camera-view" />
+            {cameraImage && cameraImage.length ? (
+              <img src={cameraImage} alt="camera-view" />
+            ) : null}
           </div>
         </Grid>
       </Grid>

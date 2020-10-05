@@ -622,13 +622,24 @@
   background: var(--primaryColor) !important;
 }
 
-.attendanceContainer .cameraView {
+.attendanceContainer .cameraViewContainer {
+  position: relative !important;
+}
+
+.attendanceContainer .cameraViewContainer .canvas {
+  width: 100%;
+  height: 100%;
+  position: absolute !important;
+  top: 0;
+}
+
+.attendanceContainer .cameraViewContainer .cameraView {
   width: 100%;
   height: 100%;
   background: black;
 }
 
-.attendanceContainer .cameraView img {
+.attendanceContainer .cameraViewContainer .cameraView img {
   width: 100%;
   height: 100%;
 }

@@ -427,14 +427,28 @@
     }
   }
 
-  .cameraView {
-    width: 100%;
-    height: 100%;
-    background: black;
 
-    img {
+  .cameraViewContainer{
+    position: relative !important;
+    .canvas{
       width: 100%;
       height: 100%;
+      position: absolute !important;
+      top: 0;
+    }
+
+    .cameraView {
+      width: 100%;
+      height: 100%;
+      background: black;
+  
+      img {
+        width: 100%;
+        height: 100%;
+      }
+  
     }
   }
+
+
 }

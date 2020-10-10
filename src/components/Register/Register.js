@@ -4,6 +4,7 @@ import { Button, TextField, Grid } from "@material-ui/core";
 import videoFile from "../../assets/video/video.webm";
 import Webcam from "react-webcam";
 import io from "socket.io-client";
+import UndoIcon from '@material-ui/icons/Undo';
 
 const ENDPOINT = "localhost:5001";
 let socket;
@@ -15,8 +16,8 @@ const Register = () => {
   const [photoFromSserver, setPhotoFromServer] = useState("");
 
   const onClickRegister = () => {
-    setNameWidth(4);
-    setCameraWidth(8);
+    setNameWidth(0);
+    setCameraWidth(12);
   };
 
   const videoConstraints = {
@@ -90,7 +91,8 @@ const Register = () => {
             </div>
           </div>
         </Grid> */}
-        <Grid item md={nameWidth}>
+        {nameWidth ? (
+          <Grid item md={nameWidth}>
           <div className={styles.registerDetails}>
             <h4>Enter Details</h4>
             <TextField
@@ -110,6 +112,10 @@ const Register = () => {
             </Button>
           </div>
         </Grid>
+        ) : (
+          null
+        )}
+        
         {cameraWidth ? (
           <Grid md={cameraWidth} className={styles.webcamContainer} item>
             {/* <Webcam
@@ -119,6 +125,14 @@ const Register = () => {
               screenshotFormat="image/jpeg"
               videoConstraints={videoConstraints}
             /> */}
+            <div className={styles.faceTurn}>
+              <UndoIcon className={styles.turnArrows} />
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Noto_Emoji_KitKat_263a.svg/1200px-Noto_Emoji_KitKat_263a.svg.png"
+                alt="smily"
+              />
+              <UndoIcon className={styles.turnArrows}/>
+            </div>
             <img src={photoFromSserver} alt="server" />
           </Grid>
         ) : null}

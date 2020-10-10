@@ -444,10 +444,8 @@ const Attendance = () => {
   const [cameraImage, setCameraImage] = useState("");
   const [name, setName] = useState("");
   const [stillImage, setStillImage] = useState("");
-  const [flag, setFlag] = useState(0);
+  const [flag, setFlag] = useState(1);
   const [innerFlag, setInnerFlag] = useState(flag);
-
-  const canvasRef = useRef(null);
 
   React.useEffect(() => {
     socket = io.connect(ENDPOINT);
@@ -461,16 +459,9 @@ const Attendance = () => {
     socket.on("stream", (data) => {
       setCameraImage(data.image);
       setName(data.name);
-      // setStillImage(data.face);
-      if (!flag) setFlag(1);
-      // const canvas = canvasRef.current;
-      // const ctx = canvas.getContext("2d");
-      // ctx.beginPath();
-      // ctx.rect(20,20,ctx.canvas.width,ctx.canvas.height);
-      // ctx.stroke();
+      setStillImage(data.face);
     });
-
-  }, [socket]);
+  }, []);
 
   const temp = new Date();
 
@@ -569,8 +560,15 @@ const Attendance = () => {
             </div>
           </div>
         </Grid>
-        <Grid className={styles.cameraViewContainer} item lg={8} xl={8} md={6} sm={12} xs={12}>
-          <canvas className={styles.canvas} ref={canvasRef} id="canvas"></canvas>
+        <Grid
+          className={styles.cameraViewContainer}
+          item
+          lg={8}
+          xl={8}
+          md={6}
+          sm={12}
+          xs={12}
+        >
           <div className={styles.cameraView}>
             {cameraImage && cameraImage.length ? (
               <img src={cameraImage} alt="camera-view" />

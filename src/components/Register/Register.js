@@ -4,7 +4,7 @@ import { Button, TextField, Grid } from "@material-ui/core";
 import videoFile from "../../assets/video/video.webm";
 import Webcam from "react-webcam";
 import io from "socket.io-client";
-import UndoIcon from '@material-ui/icons/Undo';
+import UndoIcon from "@material-ui/icons/Undo";
 
 const ENDPOINT = "localhost:5001";
 let socket;
@@ -30,6 +30,8 @@ const Register = () => {
 
   const cameraRef = useRef(null);
 
+  const canvasRef = useRef(null);
+
   const capture = useCallback(() => {
     const imageSrc = cameraRef.current.getScreenshot();
     return imageSrc;
@@ -39,14 +41,19 @@ const Register = () => {
     socket = io.connect(ENDPOINT);
     socket.on("connect", function () {
       socket.send("Client connected from React");
-    });
-    socket.on("message", (msg) => {
-      console.log(msg);
+      socket.emit("stream-video", "Send it man");
     });
 
     socket.on("stream", (data) => {
       setPhotoFromServer(data.image);
     });
+
+    const canvas = canvasRef.current;
+    const context = canvas.getContext("2d");
+    context.fillStyle = "#000000";
+    context.beginPath();
+    context.ellipse(100, 100, 10, 15, 0, 0, Math.PI * 2);
+    context.stroke();
     // while(socket.connected){
 
     // }
@@ -93,29 +100,27 @@ const Register = () => {
         </Grid> */}
         {nameWidth ? (
           <Grid item md={nameWidth}>
-          <div className={styles.registerDetails}>
-            <h4>Enter Details</h4>
-            <TextField
-              variant="outlined"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              type="text"
-              className={styles.inputField}
-              label="Name"
-            />
-            <Button
-              onClick={onClickRegister}
-              className={styles.regBtn}
-              variant="contained"
-            >
-              Register
-            </Button>
-          </div>
-        </Grid>
-        ) : (
-          null
-        )}
-        
+            <div className={styles.registerDetails}>
+              <h4>Enter Details</h4>
+              <TextField
+                variant="outlined"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                type="text"
+                className={styles.inputField}
+                label="Name"
+              />
+              <Button
+                onClick={onClickRegister}
+                className={styles.regBtn}
+                variant="contained"
+              >
+                Register
+              </Button>
+            </div>
+          </Grid>
+        ) : null}
+
         {cameraWidth ? (
           <Grid md={cameraWidth} className={styles.webcamContainer} item>
             {/* <Webcam
@@ -131,8 +136,9 @@ const Register = () => {
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Noto_Emoji_KitKat_263a.svg/1200px-Noto_Emoji_KitKat_263a.svg.png"
                 alt="smily"
               />
-              <UndoIcon className={styles.turnArrows}/>
+              <UndoIcon className={styles.turnArrows} />
             </div>
+            <canvas id="canvas" ref={canvasRef} className={styles.canvas} />
             <img src={photoFromSserver} alt="server" />
           </Grid>
         ) : null}

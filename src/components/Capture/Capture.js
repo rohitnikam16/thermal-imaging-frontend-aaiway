@@ -444,22 +444,38 @@ const Attendance = () => {
   const [cameraImage, setCameraImage] = useState("");
   const [name, setName] = useState("");
   const [stillImage, setStillImage] = useState("");
-  const [flag, setFlag] = useState(1);
+  const [flag, setFlag] = useState(0);
   const [innerFlag, setInnerFlag] = useState(flag);
+  const [date, setDate] = useState();
+  const [time, setTime] = useState();
+
+  let counter = 0;
 
   React.useEffect(() => {
-    socket = io.connect(ENDPOINT);
+    socket = io.connect(ENDPOINT, {
+      reconnection: true,
+      reconnectionAttempts: 5,
+      reconnectionDelay: 1000,
+      reconnectionDelayMax: 5000,
+      randomizationFactor: 0.5,
+    });
     socket.on("connect", function () {
       socket.send("Client connected from React");
-    });
-    socket.on("message", (msg) => {
-      console.log(msg);
+      socket.emit("attendance", "Attendance");
     });
 
-    socket.on("stream", (data) => {
+    socket.on("attendance-stream", (data) => {
       setCameraImage(data.image);
       setName(data.name);
       setStillImage(data.face);
+      if (!flag && data.name) {
+        setFlag(1);
+        setDate(getDate());
+        setTime(getTime());
+      }
+    });
+    socket.on("disconnect", () => {
+      console.log("Disconnected");
     });
   }, []);
 
@@ -532,11 +548,11 @@ const Attendance = () => {
                   </p>
                   <p>
                     {/* In time :{" "} */}
-                    {flag ? getTime() : <Skeleton variant="text" width={100} />}
+                    {flag ? date : <Skeleton variant="text" width={100} />}
                   </p>
                   <p>
                     {/* In Date : */}
-                    {flag ? getDate() : <Skeleton variant="text" width={100} />}
+                    {flag ? time : <Skeleton variant="text" width={100} />}
                   </p>
                 </div>
               </Card>

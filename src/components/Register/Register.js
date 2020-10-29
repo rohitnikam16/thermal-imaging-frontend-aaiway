@@ -41,8 +41,8 @@ const Register = () => {
     socket = io.connect(ENDPOINT);
     socket.on("connect", function () {
       socket.send("Client connected from React");
-      socket.emit("stream-video", "Send it man");
     });
+    socket.emit("stream-video", "Send it man");
 
     socket.on("stream", (data) => {
       setPhotoFromServer(data.image);
@@ -50,10 +50,10 @@ const Register = () => {
 
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
-    context.fillStyle = "#000000";
-    context.beginPath();
-    context.ellipse(100, 100, 10, 15, 0, 0, Math.PI * 2);
-    context.stroke();
+    // context.fillStyle = "#000000";
+    // context.beginPath();
+    // context.ellipse(100, 100, 10, 15, 0, 0, Math.PI * 2);
+    // context.stroke();
     // while(socket.connected){
 
     // }

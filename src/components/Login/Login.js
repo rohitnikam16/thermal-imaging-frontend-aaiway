@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import styles from "./Login.module.css";
+import { withRouter } from "react-router-dom";
 import { TextField, Button } from "@material-ui/core";
 import loginImage from "../../assets/images/heroLogin.svg";
 
-export const Login = () => {
+export const Login = ({ history }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const submitForm = () => {
-    alert("Login Working!");
+    history.push("/mode");
   };
 
   return (
@@ -57,4 +58,4 @@ export const Login = () => {
   );
 };
 
-export default Login;
+export default withRouter(Login);
